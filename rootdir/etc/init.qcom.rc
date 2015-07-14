@@ -379,6 +379,11 @@ service charger /charger
     class charger
     writepid /dev/cpuset/system-background/tasks
 
+service hvdcp_opti /system/bin/hvdcp_opti
+    class main
+    user root
+    group root
+
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet

@@ -379,6 +379,9 @@ vendor/lib/librs_adreno.so
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
+# HVDCP 3.0 charger
+bin/hvdcp_opti
+
 # IPA
 bin/ipacm-diag
 
