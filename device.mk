@@ -124,6 +124,7 @@ PRODUCT_PACKAGES += \
 
 # Init
 PRODUCT_PACKAGES += \
+    charger.fstab.qcom \
     fstab.qcom \
     init.qcom.power.rc \
     init.qcom.rc \

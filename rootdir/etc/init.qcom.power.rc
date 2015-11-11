@@ -104,6 +104,9 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    wait /dev/block/bootdevice
+    mount_all charger.fstab.qcom
+    start hvdcp_opti
 
 on class_start:late_start
     trigger enable-low-power
