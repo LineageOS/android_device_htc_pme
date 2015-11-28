@@ -275,3 +275,7 @@ PRODUCT_COPY_FILES += \
 # KeyHandler
 PRODUCT_PACKAGES += \
     com.cyanogenmod.keyhandler
+
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.msm8996

@@ -233,8 +233,8 @@ bin/hvdcp_opti
 bin/ipacm-diag
 
 # Keystore
-vendor/lib/hw/keystore.msm8996.so
-vendor/lib64/hw/keystore.msm8996.so
+vendor/lib/hw/keystore.msm8996.so:vendor/lib/hw/keystore.vendor.msm8996.so
+vendor/lib/hw/keystore.msm8996.so:vendor/lib64/hw/keystore.vendor.msm8996.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8996.so
