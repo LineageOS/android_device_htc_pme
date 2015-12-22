@@ -47,7 +47,7 @@
 
 #define __CLASS__ "HWCDisplay"
 
-#ifdef QCOM_BSP
+#if 0
 #include <exhwcomposer_defs.h>
 #endif
 
@@ -569,7 +569,7 @@ int HWCDisplay::PrePrepareLayerStack(hwc_display_contents_1_t *content_list) {
       LayerCache layer_cache = layer_stack_cache_.layer_cache[i];
       layer.flags.updating = IsLayerUpdating(hwc_layer, layer_cache);
     }
-#ifdef QTI_BSP
+#if 0
     if (hwc_layer.flags & HWC_SCREENSHOT_ANIMATOR_LAYER) {
       layer_stack_.flags.animating = true;
     }
