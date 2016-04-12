@@ -48,7 +48,6 @@ on init
     mkdir /persist 0771 system system
 
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard0
     symlink /sdcard /storage/sdcard0
 
     # From init.target.rc
