@@ -1,0 +1,71 @@
+# Audio
+audio.offload.buffer.size.kb=1024
+audio.offload.multiple.enabled=false
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+av.offload.enable=true
+
+ro.qc.sdk.audio.fluencetype=fluence
+ro.qc.sdk.audio.ssr=false
+use.voice.path.for.pcm.voip=true
+
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+
+rec.playback.conc.disabled=true
+
+audio.ds1.metainfo.key=273
+dmid=-1286820014
+
+# Bluetooth
+ro.bluetooth.dun=true
+ro.bluetooth.hfp.ver=1.7
+ro.bluetooth.sap=true
+ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
+ro.qualcomm.bluetooth.ftp=true
+ro.qualcomm.bluetooth.hfp=true
+ro.qualcomm.bluetooth.hsp=true
+ro.qualcomm.bluetooth.map=true
+ro.qualcomm.bluetooth.nap=true
+ro.qualcomm.bluetooth.opp=true
+ro.qualcomm.bluetooth.pbap=true
+ro.qualcomm.bt.hci_transport=smd
+
+# Camera
+camera2.portability.force_api=1
+
+# Display
+#persist.hwc.mdpcomp.enable=true
+ro.opengles.version=196609
+ro.sf.lcd_density=640
+
+# Factory Reset Protection
+ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
+# NITZ
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
+
+# Radio
+rild.libargs=-d /dev/smd0
+rild.libpath=/system/lib64/libhtc_rilhook.so
+ro.baseband.arch=msm
+ro.ril.telephony.mqanelements=5
+ro.telephony.call_ring.multiple=false
+
+ro.ril.oem.ecclist=911
+ro.ril.oem.nosim.ecclist=911
+
+# Wifi
+wifi.interface=wlan0

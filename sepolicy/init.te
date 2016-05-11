@@ -1,0 +1,2 @@
+allow init adsprpcd_file:filesystem { relabelto relabelfrom mount };
+allow init misc_partition:blk_file w_file_perms; # Need to allow BCB writes

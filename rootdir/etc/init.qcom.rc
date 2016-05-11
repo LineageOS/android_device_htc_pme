@@ -1,0 +1,502 @@
+# Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of The Linux Foundation nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+import init.qcom.power.rc
+import init.qcom.usb.rc
+import init.target.rc
+
+on early-init
+    symlink /data/tombstones /tombstones
+
+    mkdir /dsp 0771 media media
+    mkdir /firmware 0771 system system
+    mkdir /firmware/adsp 0771 system system
+    mkdir /firmware/radio 0771 system system
+    mkdir /firmware/wcnss 0771 system system
+    mkdir /firmware/wsd 0500 rfs rfs
+
+on init
+    export LD_PRELOAD "liblog_htc.so"
+
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard0
+    symlink /sdcard /storage/sdcard0
+
+    # From init.target.rc
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
+on fs
+    mount_all fstab.qcom
+
+on post-fs-data
+    # Create directory for tombstone
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
+    mkdir /persist/tee 0700 system system
+
+    # Create directory for audio
+    mkdir /data/data/media 0770 media media
+    mkdir /data/misc/audio 0770 audio audio
+    mkdir /data/misc/dts 0770 media audio
+
+    # Create directory for camera
+    mkdir /data/camera 0770 media camera
+    mkdir /data/misc/camera 0770 camera camera
+
+    # Create directory for CNE
+    mkdir /data/connectivity 0771 system system
+
+    # Create directory for DASH client
+    mkdir /data/misc/dash 0770 media audio
+
+    # Create directory for display
+    mkdir /data/misc/display 0770 system graphics
+    mkdir /persist/display 0770 system graphics
+
+    # Create directory for DPM
+    mkdir /data/dpm 0771 system system
+    mkdir /data/dpm/nsrm 0771 system system
+
+    # Create directory for fingerprint
+    mkdir /data/fpc 0770 system system
+
+    # Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
+
+    # Create directory for IMS services
+    mkdir /data/shared 0755 system system
+
+    # Create directory for IPA
+    mkdir /data/misc/ipa 0700 net_admin net_admin
+
+    # Create directory for location services
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/gpsone_d 0770 system gps
+    mkdir /data/misc/location/gsiff 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
+    mkdir /data/misc/location/quipc 0770 gps system
+    mkdir /data/misc/location/xtwifi 0770 gps gps
+
+    # Create directory for MobiCore
+    mkdir /data/app/mcRegistry 0775 system system
+    symlink /persist/tee/00000000.authtokcont.backup /data/app/mcRegistry/00000000.authtokcont.backup
+    export MC_AUTH_TOKEN_PATH /data/app/mcRegistry
+
+    # Create directory for modem config
+    mkdir /data/misc/radio/modem_config 0770 radio radio
+
+    # Mark the copy complete flag to not completed
+    write /data/misc/radio/copy_complete 0
+    chown radio radio /data/misc/radio/copy_complete
+    chmod 0660 /data/misc/radio/copy_complete
+
+    # Create directory for NFC
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+    # Create directory for perfd
+    mkdir /data/misc/perfd 2755 root system
+    mkdir /data/system/perfd 2770 root system
+
+    # Create directory for time-services
+    mkdir /data/time/ 0700 system system
+
+    # Create directory for TZ Apps
+    mkdir /data/misc/qsee 0770 system system
+
+    setprop vold.post_fs_data_done 1
+
+on early-boot
+    chown root audio /sys/kernel/boot_adsp/boot
+    write /sys/kernel/boot_adsp/boot 1
+
+on boot
+    # Create QMUX deamon socket area
+    mkdir /dev/socket/qmux_audio 0770 media audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+
+    # Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
+
+    # Set rfkill permissions
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/type
+
+    # Set graphic node permissions
+    chown system graphics /sys/class/graphics/fb0/mdp/bw_mode_bitmap
+    chown system graphics /sys/class/graphics/fb0/idle_time
+    chown system graphics /sys/class/graphics/fb0/dynamic_fps
+    chown system graphics /sys/class/graphics/fb0/dyn_pu
+    chown system graphics /sys/class/graphics/fb0/modes
+    chown system graphics /sys/class/graphics/fb0/mode
+    chmod 0664 /sys/class/graphics/fb0/mdp/bw_mode_bitmap
+    chmod 0664 /sys/class/graphics/fb0/idle_time
+    chmod 0664 /sys/class/graphics/fb0/dynamic_fps
+    chmod 0664 /sys/class/graphics/fb0/dyn_pu
+    chmod 0664 /sys/class/graphics/fb0/modes
+    chmod 0664 /sys/class/graphics/fb0/mode
+
+    # Set HTC debug driver permissions
+    chown root system /proc/driver/hdf
+    chmod 0664 /proc/driver/hdf
+
+    # Set display permissions
+    chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
+    chown system system /sys/class/leds/lcd-backlight/burst_switch
+    chown system system /sys/class/leds/lcd-backlight-nits/brightness
+
+    chown system system /sys/camera_led_status/led_hotspot_status
+    chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
+
+    # Sensors
+    chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
+    chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
+    chown system system /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
+
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
+    chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
+
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ap_calibrator_data_acc_rl
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc_rl
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_barometer
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_gyro
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_light
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_mag
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_proximity
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_en
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_acc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/dbg_flag
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/flush
+    chown system gesture_motion /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_leveltolux
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/mcu_wakeup
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
+
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ap_calibrator_data_acc_rl
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc_rl
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_barometer
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_gyro
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_light
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_mag
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_proximity
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_en
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_acc
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/dbg_flag
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/flush
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/mcu_wakeup
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
+
+    chown system system /sys/class/optical_sensors/proximity/p_status
+    chown radio radio /sys/class/optical_sensors/proximity/ps_adc
+    chown system system /sys/class/optical_sensors/proximity/ps_info
+
+    chmod 444 /sys/class/optical_sensors/proximity/p_status
+    chmod 444 /sys/class/optical_sensors/proximity/ps_adc
+    chmod 444 /sys/class/optical_sensors/proximity/ps_info
+
+    # LED
+    chown system system /sys/class/leds/flashlight/brightness
+    chown system system /sys/class/leds/indicator/ModeRGB
+    chown system system /sys/class/leds/indicator/off_timer
+
+    # Set glove mode permissions
+    chown system system /sys/android_touch/glove_setting
+
+    # Set volume key wake attribute permissions
+    chown media media /sys/keyboard/vol_wakeup
+
+# Services begin here
+
+service adsprpcd /system/bin/adsprpcd
+    class main
+    user media
+    group media
+
+service audiod /system/bin/audiod
+   class late_start
+   user system
+   group system
+
+service charger /charger
+    class charger
+
+service clockd /system/bin/clockd
+    class main
+    user root
+
+service cnd /system/bin/cnd
+    class late_start
+    socket cnd stream 660 root inet
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system input
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+   class main
+   user system
+   socket ims_rtpd stream 0660 system radio
+   group radio net_raw diag diag inet log
+   disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start ims_rtp_daemon
+
+service imscmservice /system/bin/imscmservice
+    class main
+    user system
+    group radio net_raw diag diag log
+    disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start imscmservice
+
+service imsdatadaemon /system/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet net_raw log diag net_admin
+    disabled
+
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
+
+service imsqmidaemon /system/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio net_raw log diag
+
+service ipacm-diag /system/bin/ipacm-diag
+    class main
+    user system
+    socket ipacm_log_file dgram 660 system net_admin
+    group net_admin qcom_diag
+
+service ipacm /system/bin/ipacm
+    class main
+    user net_admin
+    group net_admin inet
+
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
+    class main
+    user root
+    oneshot
+
+service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+    class main
+    user root
+    group root
+
+service netmgrd /system/bin/netmgrd
+    class main
+
+service per_mgr /system/bin/pm-service
+    class late_start
+    user system
+    group system net_raw
+
+service perfd /system/vendor/bin/perfd
+    class main
+    user root
+    disabled
+
+service ppd /system/vendor/bin/mm-pp-daemon
+    class late_start
+    disabled
+    user system
+    socket pps stream 0660 system system
+    group system graphics
+
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
+on property:init.svc.surfaceflinger=running
+    start ppd
+
+service qcamerasvr /system/bin/mm-qcamera-daemon
+    class main
+    user camera
+    group camera system inet input graphics
+
+service qmuxd /system/bin/qmuxd
+    class core
+    user root
+    group radio audio bluetooth gps qcom_diag
+
+service qseecomd /system/bin/qseecomd
+    class core
+    user root
+    group root
+
+service qti /system/vendor/bin/qti
+    class main
+    user radio
+    group radio net_raw diag usb net_admin
+
+service rmt_storage /system/bin/rmt_storage
+    class core
+    user root
+
+service thermal-engine /system/vendor/bin/thermal-engine
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    group root
+
+service time_daemon /system/bin/time_daemon
+    class late_start
+    user root
+    group root
+
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi radio
+    oneshot
+
+# WPA supplicant
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
+    -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -puse_p2p_group_interface=1 \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+on property:init.svc.wpa_supplicant=stopped
+    stop dhcpcd
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
+    class late_start
+    disabled
+    oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
+    disabled
+    oneshot
+
+# Triggers start here
+on class_start:late_start
+    # For modem config copy
+    write /data/misc/radio/copy_complete 1
