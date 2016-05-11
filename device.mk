@@ -85,6 +85,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    libxml2 \
     Snap
 
 # Display
