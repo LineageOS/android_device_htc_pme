@@ -41,16 +41,18 @@
 /dev/smd5                 0660   system     system
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
-/dev/smd20                0660   system     system
 /dev/ccid_bridge          0660   system     system
-/dev/ipa                  0660   net_admin  net_admin
-/dev/wwan_ioctl           0660   net_admin  net_admin
+/dev/ipa                  0660   system     net_admin
+/dev/wwan_ioctl           0660   system     net_admin
 /dev/ipaNatTable          0660   net_admin  net_admin
 /dev/rmnet_ctrl           0660   usb        usb
 /dev/dpl_ctrl             0660   usb        usb
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
+
+#permissions for CIQ
+/dev/smd20                0660   system     system
 
 /dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
@@ -108,6 +110,7 @@
 /dev/media*               0660   system     camera
 /dev/v4l-subdev*          0660   system     camera
 /dev/qseecom              0660   system     drmrpc
+/dev/seemplog             0660   system     system
 /dev/pft                  0660   system     drmrpc
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
@@ -115,7 +118,8 @@
 /dev/jpeg2                0660   system     camera
 /dev/jpeg3                0660   system     camera
 /dev/adsprpc-smd          0664   system     system
-/dev/system_health_monitor 0640  radio      system
+/dev/system_health_monitor 0644  radio      system
+/dev/mdss_rotator         0664   system     system
 /dev/msm_camera/*         0660   system     camera
 /dev/gemini/              0660   system     camera
 /dev/mercury0             0660   system     camera
@@ -168,13 +172,6 @@
 /dev/voice_svc            0660   system     audio
 /dev/avtimer              0660   system     audio
 
-# HTC audio
-/dev/tpa6185              0660   system     audio
-/dev/rt5501               0660   system     audio
-/dev/aud_hs_amp           0660   system     audio
-/dev/tfa9887              0660   system     audio
-/dev/tfa9887l             0660   system     audio
-
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
 /dev/dvb/adapter0/dvr*    0660   media       media
@@ -184,16 +181,14 @@
 /dev/tsc_mux0             0660   media       media
 /dev/tsc_ci0              0660   media       media
 
+# ultrasonic fingerprint
+/sys/devices/soc/757a000.i2c/i2c-6/*                eeprom         0440    system   system
+
 # tbase
 /dev/mobicore-user        0666   system    system
 /dev/mobicore             0600   system    system
 
-# Radio
-/dev/radio_feedback       0660   radio     radio
-
 # sensors
-/dev/iio:device0          0660   system    system
-
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system
@@ -216,16 +211,6 @@
 /sys/devices/virtual/input/input*                   poll           0660    input    system
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
 
-# ctp
-/sys/devices/soc.0/78b9000.i2c/i2c-5/5-0038/sensors/ft5x06-proximity	enable	0660	input	system
-/sys/devices/virtual/gesture/gesture*		enable	0660	input	system
-/sys/devices/virtual/gesture/gesture*		pocket	0660	input	system
-
-# led
-/sys/devices/soc.0/78b5000.i2c/i2c-1/1-0045/leds/red		blink	0660	input	system
-/sys/devices/soc.0/78b5000.i2c/i2c-1/1-0045/leds/green		blink	0660	input	system
-/sys/devices/soc.0/78b5000.i2c/i2c-1/1-0045/leds/blue		blink	0660	input	system
-
 # vm_bms
 /dev/vm_bms               0660   system     system
 /dev/battery_data         0660   system     system
@@ -233,11 +218,13 @@
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
+/sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/wlan0/queues/rx-* rps_cpus 0660 system system
+/sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/p2p0/queues/rx-* rps_cpus 0660 system system
+
 #nfc permissions
 /dev/nfc-nci              0660    nfc         nfc
 /dev/nq-nci               0660    nfc         nfc
 /dev/assd                 0660    nfc         nfc
-/dev/pn544                0600    nfc         nfc
 
 # UIO devices
 /dev/uio0                 0660   system     system
@@ -253,27 +240,29 @@
 # Ramdump devices
 /dev/ramdump*             0640   system     system
 
-#Improve Touch
+# Fingerprint device
+/dev/qbt1000              0660   system     system
+/dev/htc_smi              0660   system     system
+
+#ImproveTouch device
 /dev/hbtp_input           0660   system     system
 /dev/hbtp_vm              0660   system     system
-/dev/jdi-bu21150          0660   system     system
 
-# sensor hub
-/dev/shub_dload       0660   system     system
-/dev/shub_log       0660   system     system
-/dev/shub_event       0660   system     system
-
-# fingerprint
-/sys/devices/soc.0/fp_fpc1155.*   blank_state       0660  system system
-/sys/devices/soc.0/fp_fpc1155.*   do_wakeup         0220  system system
-/sys/devices/soc.0/fp_fpc1155.*   hal_footprint     0220  system system
-/sys/devices/soc.0/fp_fpc1155.*   wakeup_enable     0220  system system
-/sys/devices/soc.0/fp_fpc1155.*   disable_charging  0220  system system
-/sys/devices/soc.0/fp_fpc1155.*   irq_gpio          0440  system system
-/sys/devices/soc.0/fp_fpc1155.*   irq_enable        0660  system system
-
-# Fingerprint device
-/dev/ontario              0640   system     system
-
-# Add device block for FRP
+# Storage: for factory reset protection feature
 /dev/block/bootdevice/by-name/frp       0660   system     system
+
+#FPC fingerprint
+/sys/devices/soc/soc:fp_fpc1155   pinctl_set        0200  system system
+/sys/devices/soc/soc:fp_fpc1155   spi_owner         0200  system system
+/sys/devices/soc/soc:fp_fpc1155   spi_prepare       0200  system system
+/sys/devices/soc/soc:fp_fpc1155   regulator_enable  0200  system system
+/sys/devices/soc/soc:fp_fpc1155   bus_lock          0200  system system
+/sys/devices/soc/soc:fp_fpc1155   hw_reset          0200  system system
+/sys/devices/soc/soc:fp_fpc1155   wakeup_enable     0200  system system
+/sys/devices/soc/soc:fp_fpc1155   hw_reset          0200  system system
+/sys/devices/soc/soc:fp_fpc1155   clk_enable        0200  system system
+/sys/devices/soc/soc:fp_fpc1155   irq               0600  system system
+/sys/devices/soc/soc:fp_fpc1155   irq_count         0400  system system
+/sys/devices/soc/soc:fp_fpc1155   fp_disable_charge 0200  system system
+/sys/devices/soc/soc:fp_fpc1155   hal_footprint     0200  system system
+
