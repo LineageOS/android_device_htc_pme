@@ -77,10 +77,10 @@ PRODUCT_PACKAGES += \
     tinymix
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/configs/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml
 
 # Camera
 PRODUCT_PACKAGES += \
