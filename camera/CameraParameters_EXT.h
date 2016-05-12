@@ -57,6 +57,8 @@ public:
     int getOrientation() const;
     void setOrientation(int orientation);
 
+    static const char SCENE_MODE_AUTOHDR[];
+    static const char SCENE_MODE_AUTOHDR_BURST[];
     static const char SCENE_MODE_BURST[];
     static const char SCENE_MODE_MANUAL[];
     static const char SCENE_MODE_PANORAMA[];

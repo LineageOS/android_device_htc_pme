@@ -24,6 +24,8 @@
 
 namespace android {
 
+const char CameraParameters_EXT::SCENE_MODE_AUTOHDR[] = "autohdr";
+const char CameraParameters_EXT::SCENE_MODE_AUTOHDR_BURST[] = "autohdr_burst";
 const char CameraParameters_EXT::SCENE_MODE_BURST[] = "burst";
 const char CameraParameters_EXT::SCENE_MODE_MANUAL[] = "manual";
 const char CameraParameters_EXT::SCENE_MODE_PANORAMA[] = "panorama";
