@@ -83,4 +83,16 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
+VENUS_IMAGES := \
+    venus.b00 venus.b01 venus.b02 venus.b03 venus.b04 venus.mdt
+
+VENUS_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(VENUS_IMAGES)))
+$(VENUS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "VENUS firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/venus/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(VENUS_SYMLINKS)
+
 endif

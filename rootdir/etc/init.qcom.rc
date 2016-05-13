@@ -37,6 +37,7 @@ on early-init
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/radio 0771 system system
     mkdir /firmware/wsd 0500 rfs rfs
+    mkdir /firmware/venus 0771 system system
 
 on init
     export LD_PRELOAD "liblog_htc.so"
