@@ -36,7 +36,6 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/radio 0771 system system
-    mkdir /firmware/wcnss 0771 system system
     mkdir /firmware/wsd 0500 rfs rfs
 
 on init
@@ -60,7 +59,6 @@ on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
 
     mkdir /persist/data/sfs 0700 system system
@@ -414,12 +412,6 @@ service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
-
-service wcnss-service /system/bin/wcnss_service
-    class late_start
-    user system
-    group system wifi radio
-    oneshot
 
 # WPA supplicant
 service p2p_supplicant /system/bin/wpa_supplicant \
