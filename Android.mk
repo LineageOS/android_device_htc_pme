@@ -83,6 +83,20 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
+SLPI_IMAGES := \
+    slpi.b00 slpi.b01 slpi.b02 slpi.b03 slpi.b04 slpi.b05 slpi.b06 \
+    slpi.b07 slpi.b08 slpi.b09 slpi.b10 slpi.b11 slpi.b12 slpi.b13 \
+    slpi.b14 slpi.b15 slpi.mdt slpiver.cfg
+
+SLPI_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(SLPI_IMAGES)))
+$(SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SLPI firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/slpi/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SLPI_SYMLINKS)
+
 VENUS_IMAGES := \
     venus.b00 venus.b01 venus.b02 venus.b03 venus.b04 venus.mdt
 

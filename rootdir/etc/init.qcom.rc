@@ -36,8 +36,9 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/radio 0771 system system
-    mkdir /firmware/wsd 0500 rfs rfs
+    mkdir /firmware/slpi 0771 system system
     mkdir /firmware/venus 0771 system system
+    mkdir /firmware/wsd 0500 rfs rfs
 
 on init
     export LD_PRELOAD "liblog_htc.so"
@@ -141,6 +142,7 @@ on post-fs-data
 on early-boot
     chown root audio /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_slpi/boot 1
 
 on boot
     # Create QMUX deamon socket area
@@ -266,6 +268,8 @@ on boot
 
     # Set volume key wake attribute permissions
     chown media media /sys/keyboard/vol_wakeup
+
+    write /sys/devices/soc/soc:fp_fpc1155/pinctl_set fpc1020_reset_active
 
 # Services begin here
 
