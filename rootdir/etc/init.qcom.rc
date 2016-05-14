@@ -56,6 +56,9 @@ on init
 on fs
     mount_all fstab.qcom
 
+    # HTC feature: Support multiple firmware image mount points
+    write /sys/module/firmware_class/parameters/fw_path /firmware/adsp,/firmware/radio,/firmware/slpi,/firmware/venus,/firmware/wsd,/vendor/firmware
+
 on post-fs-data
     # Create directory for tombstone
     mkdir /data/tombstones 0771 system system
