@@ -163,6 +163,12 @@ on boot
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
 
+    # Bluetooth serial bus
+    chown bluetooth net_bt /dev/ttyHS0
+    chown bluetooth bluetooth /dev/ttyHS2
+    chmod 0660 /dev/ttyHS0
+    chmod 0660 /dev/ttyHS2
+
     # Set graphic node permissions
     chown system graphics /sys/class/graphics/fb0/msm_cmd_autorefresh_en
     chown system graphics /sys/class/graphics/fb0/idle_time
