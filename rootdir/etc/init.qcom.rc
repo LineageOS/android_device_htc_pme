@@ -189,17 +189,55 @@ on boot
     chown system system /sys/camera_led_status/led_hotspot_status
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # Sensors
+    # Laser sensor
+    chown system system /dev/iio:device0
+    chown system system /sys/class/htc_laser/laser/iio/buffer/enable
+    chown system system /sys/class/htc_laser/laser/iio/buffer/length
+    chown system system /sys/class/htc_laser/laser/iio/trigger/current_trigger
+
+    chmod 660 system system /dev/iio:device0
+    chmod 660 system system /sys/class/htc_laser/laser/iio/buffer/enable
+    chmod 660 system system /sys/class/htc_laser/laser/iio/buffer/length
+    chmod 660 system system /sys/class/htc_laser/laser/iio/trigger/current_trigger
+
+    chown system system /sys/devices/virtual/htc_laser/laser/enable
+    chown system system /sys/devices/virtual/htc_laser/laser/batch
+    chown system system /sys/devices/virtual/htc_laser/laser/flush
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_power
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_hwid
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_range
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_compensation
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_offset
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_xtalk
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_offset_calibrate
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_xtalk_calibrate
+    chown system system /sys/devices/virtual/htc_laser/laser/laser_cali_status
+
+    chmod 660 /sys/devices/virtual/htc_laser/laser/enable
+    chmod 660 /sys/devices/virtual/htc_laser/laser/batch
+    chmod 660 /sys/devices/virtual/htc_laser/laser/flush
+    chmod 660 /sys/devices/virtual/htc_laser/laser/laser_power
+    chmod 440 /sys/devices/virtual/htc_laser/laser/laser_hwid
+    chmod 440 /sys/devices/virtual/htc_laser/laser/laser_range
+    chmod 660 /sys/devices/virtual/htc_laser/laser/laser_compensation
+    chmod 660 /sys/devices/virtual/htc_laser/laser/laser_offset
+    chmod 660 /sys/devices/virtual/htc_laser/laser/laser_xtalk
+    chmod 440 /sys/devices/virtual/htc_laser/laser/laser_offset_calibrate
+    chmod 660 /sys/devices/virtual/htc_laser/laser/laser_xtalk_calibrate
+    chmod 440 /sys/devices/virtual/htc_laser/laser/laser_cali_status
+
+    # Motion sensors
+    chown system system /dev/iio:device1
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
 
+    chmod 660 /dev/iio:device1
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
 
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ap_calibrator_data_acc_rl
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc_rl
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_barometer
@@ -211,23 +249,25 @@ on boot
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_acc
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/dbg_flag
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/flush
-    chown system gesture_motion /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_leveltolux
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/mcu_wakeup
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
-    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/hall_sensor
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/facedown_enabled
+    chown system gesture_motion /sys/class/htc_sensorhub/sensor_hub/gesture_motion
+    chown system system /sys/class/htc_sensorhub/sensor_hub/mcu_wakeup
+    chown system system /sys/class/htc_sensorhub/sensor_hub/dbg_flag
+    chown system system /sys/class/optical_sensors/proximity/p_status
+    chown radio radio /sys/class/optical_sensors/proximity/ps_adc
 
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ap_calibrator_data_acc_rl
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_acc_rl
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_data_barometer
@@ -239,27 +279,23 @@ on boot
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_acc
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/dbg_flag
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/flush
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/mcu_wakeup
-    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
-    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/firmware_version
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/hall_sensor
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
-
-    chown system system /sys/class/optical_sensors/proximity/p_status
-    chown radio radio /sys/class/optical_sensors/proximity/ps_adc
-    chown system system /sys/class/optical_sensors/proximity/ps_info
-
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/facedown_enabled
+    chmod 664 /sys/class/htc_sensorhub/sensor_hub/gesture_motion
+    chmod 664 /sys/class/htc_sensorhub/sensor_hub/mcu_wakeup
+    chmod 664 /sys/class/htc_sensorhub/sensor_hub/dbg_flag
     chmod 444 /sys/class/optical_sensors/proximity/p_status
     chmod 444 /sys/class/optical_sensors/proximity/ps_adc
-    chmod 444 /sys/class/optical_sensors/proximity/ps_info
 
     # LED
     chown system system /sys/class/leds/flashlight/brightness
