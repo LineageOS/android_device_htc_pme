@@ -20,6 +20,7 @@
 /dev/block/bootdevice/by-name/slpi          /firmware/slpi     vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
 /dev/block/bootdevice/by-name/venus         /firmware/venus    vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
 /dev/block/bootdevice/by-name/frp           /persistent        emmc    defaults                                                                                          defaults
+/dev/block/bootdevice/by-name/misc          /misc              emmc    defaults                                                                                          defaults
 
 /devices/soc/74a4900.sdhci/mmc_host/mmc*    auto               auto    defaults                                                                                          voldmanaged=sdcard1:auto,noemulatedsd,encryptable=userdata
 /devices/platform/msm_hsusb*                auto               auto    defaults                                                                                          voldmanaged=usbdisk:auto
