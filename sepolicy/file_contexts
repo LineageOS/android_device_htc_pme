@@ -8,6 +8,9 @@
 /dev/socket/clockd(/.*)?                    u:object_r:clockd_socket:s0
 /system/bin/clockd                          u:object_r:clockd_exec:s0
 
+# CMHW
+/sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:vibeamp_sysfs:s0
+
 # Fingerprint
 /data/fpc(/.*)?                             u:object_r:fingerprintd_data_file:s0
 /sys/devices/soc.0/fp_fpc1155.104(/.*)?     u:object_r:sysfs_fingerprint:s0
