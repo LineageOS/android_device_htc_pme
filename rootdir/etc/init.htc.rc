@@ -105,12 +105,6 @@ on fs
 # maintain the list of processes name for kernel monitoring usage
     chown system /sys/process/task_comm_list
 
-# NFC ++
-# permissions for NFC
-    chmod 0600 /dev/pn544
-    chown nfc nfc /dev/pn544
-# NFC --
-
 on property:sys.boot_completed=1
     start mocana-startup
     start htc-post-boot
