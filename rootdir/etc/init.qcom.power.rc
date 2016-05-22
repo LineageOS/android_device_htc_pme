@@ -91,7 +91,7 @@ on enable-low-power
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    wrute /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
 
     rm /data/system/perfd/default_values
     start perfd
