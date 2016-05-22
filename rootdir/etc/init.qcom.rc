@@ -464,6 +464,16 @@ service qti /system/vendor/bin/qti
     user radio
     group radio net_raw diag usb net_admin
 
+service_redefine ril-daemon /system/bin/rild
+    class core
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    socket cfiat stream 660 radio inet
+    socket kipc stream 660 radio inet
+    user root
+    group radio cache inet misc audio log qcom_diag carrier
+
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
