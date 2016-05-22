@@ -120,11 +120,14 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.htc.rc \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.qcom.sh \
+    init.qcom.firmware_links.sh
 
 # Input
 PRODUCT_COPY_FILES += \
