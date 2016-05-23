@@ -65,17 +65,6 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>12</item>
-        <item>20</item>
-        <item>30</item>
-        <item>45</item>
-        <item>75</item>
-        <item>100</item>
-        <item>140</item>
-        <item>190</item>
-        <item>210</item>
-        <item>255</item>
-        <item>255</item>
     </integer-array>
 
     <!-- Array of output values for keyboard backlight corresponding to the LUX values
