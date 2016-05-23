@@ -96,6 +96,9 @@ on post-fs-data
     # Create directory for fingerprint
     mkdir /data/fpc 0770 system system
 
+    # Create directory for SSC/SLPI sensors
+    mkdir /data/misc/sensors 0775 system system
+
     # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
@@ -186,6 +189,11 @@ on boot
     # Set HTC debug driver permissions
     chown root system /proc/driver/hdf
     chmod 0664 /proc/driver/hdf
+
+    # SSC/SLPI sensors
+    chmod 0775 /persist/sensors
+    chmod 0664 /persist/sensors/sensors_settings
+    chown system root /persist/sensors/sensors_settings
 
     # Set display permissions
     chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
@@ -488,6 +496,11 @@ service_redefine ril-daemon /system/bin/rild
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+
+service sensors /system/bin/sensors.qcom
+    class core
+    user root
+    group root
 
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
