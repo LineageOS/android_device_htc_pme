@@ -197,11 +197,13 @@ on boot
 
     # Laser sensor
     chown system system /dev/iio:device0
+    chown system system /dev/iio:device1
     chown system system /sys/class/htc_laser/laser/iio/buffer/enable
     chown system system /sys/class/htc_laser/laser/iio/buffer/length
     chown system system /sys/class/htc_laser/laser/iio/trigger/current_trigger
 
     chmod 660 system system /dev/iio:device0
+    chmod 660 system system /dev/iio:device1
     chmod 660 system system /sys/class/htc_laser/laser/iio/buffer/enable
     chmod 660 system system /sys/class/htc_laser/laser/iio/buffer/length
     chmod 660 system system /sys/class/htc_laser/laser/iio/trigger/current_trigger
@@ -232,13 +234,11 @@ on boot
     chmod 660 /sys/devices/virtual/htc_laser/laser/laser_xtalk_calibrate
     chmod 440 /sys/devices/virtual/htc_laser/laser/laser_cali_status
 
-    # Motion sensors
-    chown system system /dev/iio:device1
+    # SensorHUB
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
     chown system system /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
 
-    chmod 660 /dev/iio:device1
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/enable
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/buffer/length
     chmod 660 /sys/class/htc_sensorhub/sensor_hub/iio/trigger/current_trigger
@@ -256,9 +256,14 @@ on boot
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_leveltolux
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_mechanism
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_proximity
+    chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/data_proximity_polling
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
@@ -286,9 +291,14 @@ on boot
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_gyro
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/calibrator_status_mag
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_canc
+    chmod 660 /sys/devices/virtual/htc_sensorhub/sensor_hub/ps_autok_thd
+    chmod 444 /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_leveltolux
+    chmod 444 /sys/devices/virtual/htc_sensorhub/sensor_hub/ls_mechanism
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_barometer
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_kadc
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_light_polling
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_proximity
+    chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/data_proximity_polling
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/delay_ms
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/enable
     chmod 664 /sys/devices/virtual/htc_sensorhub/sensor_hub/batch_enable
@@ -310,6 +320,7 @@ on boot
 
     # Set glove mode permissions
     chown system system /sys/android_touch/glove_setting
+    chown system system /sys/android_cap/glove_setting
 
     # Set volume key wake attribute permissions
     chown media media /sys/keyboard/vol_wakeup
