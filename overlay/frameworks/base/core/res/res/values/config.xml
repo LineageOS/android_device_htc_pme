@@ -120,6 +120,10 @@
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
     <integer name="config_safe_media_volume_index">10</integer>
 
+    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
+         on the headphone/microphone jack. When false use the older uevent framework. -->
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+
     <!-- Defines the shutdown options shown in the reboot dialog. -->
         <array name="shutdown_reboot_options" translatable="false">
         <item>@string/reboot_reboot</item>
