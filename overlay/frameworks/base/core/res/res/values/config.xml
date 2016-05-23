@@ -15,11 +15,6 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
-         autodetected from the Configuration. -->
-    <bool name="config_showNavigationBar">true</bool>
-
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
@@ -35,17 +30,16 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>8</item>
-        <item>14</item>
-        <item>41</item>
-        <item>109</item>
-        <item>576</item>
-        <item>1251</item>
-        <item>2101</item>
-        <item>3851</item>
-        <item>11501</item>
-        <item>13800</item>
-        <item>16560</item>
+        <item>1</item>
+        <item>2</item>
+        <item>25</item>
+        <item>26</item>
+        <item>2381</item>
+        <item>4600</item>
+        <item>7000</item>
+        <item>9000</item>
+        <item>12000</item>
+        <item>15000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -54,13 +48,12 @@
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>30</item>
-        <item>50</item>
-        <item>70</item>
-        <item>91</item>
-        <item>119</item>
+        <item>57</item>
+        <item>72</item>
+        <item>72</item>
+        <item>142</item>
         <item>142</item>
         <item>170</item>
-        <item>199</item>
         <item>227</item>
         <item>255</item>
         <item>255</item>
@@ -81,7 +74,6 @@
         <item>140</item>
         <item>190</item>
         <item>210</item>
-        <item>255</item>
         <item>255</item>
         <item>255</item>
     </integer-array>
@@ -105,7 +97,7 @@
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
-    <integer name="config_shutdownBatteryTemperature">600</integer>
+    <integer name="config_shutdownBatteryTemperature">680</integer>
 
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
@@ -126,7 +118,7 @@
     <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
-    <integer name="config_safe_media_volume_index">8</integer>
+    <integer name="config_safe_media_volume_index">10</integer>
 
     <!-- Defines the shutdown options shown in the reboot dialog. -->
         <array name="shutdown_reboot_options" translatable="false">
@@ -174,7 +166,6 @@
     <integer-array translatable="false" name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
-        <item>4</item>
         <item>5</item>
         <item>7</item>
     </integer-array>
@@ -285,22 +276,20 @@
          If no value is found for the rat-name in use, the system default will be applied.
     -->
     <string-array name="config_mobile_tcp_buffers">
-        <item>lte:2560000,2560000,5120000,262144,524288,3461120</item>
-        <item>hspap:704512,734003,2202010,32040,225280,1220608</item>
-        <item>hsupa:288768,288768,1572864,16777,225280,1220608</item>
-        <item>hsdpa:288768,367002,1572864,8738,225280,1220608</item>
+        <item>lte:524288,1048576,5120000,262144,524288,3461120</item>
+        <item>hspap:122334,734003,2202010,32040,225280,1220608</item>
         <item>hspa:40778,244668,1572864,16777,225280,1220608</item>
+        <item>hsupa:40778,244668,1572864,16777,225280,1220608</item>
+        <item>hsdpa:61167,367002,1572864,8738,225280,1220608</item>
         <item>umts:58254,349525,1572864,58254,349525,1220608</item>
         <item>edge:4093,26280,70800,4096,16384,70800</item>
         <item>gprs:4092,8760,48000,4096,8760,48000</item>
+        <item>evdo_b:4094,87380,262144,4096,16384,262144</item>
     </string-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
-        <item>0</item>
-        <item>20</item>
-        <item>30</item>
-        <item>50</item>
+        <item>25</item>
     </integer-array>
 
     <!-- Set this to true to enable the platform's auto-power-save modes like doze and
