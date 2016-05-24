@@ -67,9 +67,13 @@ static int amp_load_sequence(FILE *seq, int amp_fd) {
                 ret = -5;
                 break;
             }
+            for (unsigned x = 0; x < length; x++) printf("%02X ", buff2[x]);
             if (memcmp(buff, buff2, length) != 0) {
                 // don't give up
                 ret = -6;
+                printf("bad\n");
+            } else {
+                printf("good\n");
             }
         }
     }
