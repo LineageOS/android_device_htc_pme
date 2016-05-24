@@ -64,8 +64,5 @@ ro.baseband.arch=msm
 ro.ril.telephony.mqanelements=5
 ro.telephony.call_ring.multiple=false
 
-ro.ril.oem.ecclist=911
-ro.ril.oem.nosim.ecclist=911
-
 # Wifi
 wifi.interface=wlan0
