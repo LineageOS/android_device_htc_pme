@@ -459,11 +459,31 @@ void vendor_load_properties()
             property_set("ro.gsm.2nd_data_retry_config", "max_retries=infinite,45000");
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
-        } else if (strstr(bootcid, "BS_US001")) {
-            /* HTC 10 (US Unlocked) */
-            /* Not sure how to handle the US unlocked devices yet they don't set ril props in custimize */
-        } else if (strstr(bootcid, "BS_US002")) {
-            /* Not sure how to handle the US unlocked devices yet they don't set ril props in custimize */
+        } else if (strstr(bootcid, "BS_US001") || strstr(bootcid, "BS_US002") || strstr(bootcid, "11111111")) {
+            /* HTC 10 (North America Unlocked) */
+            /* Use the generic-ish default props used on Canadian carriers for now */
+            gsm_properties("9");
+            property_set("ro.build.fingerprint", "htc/pmewl_00617/htc_pmewl:6.0.1/MMB29M/748430.5:user/release-keys");
+            property_set("ro.build.description", "1.53.617.5 8.0_g CL748430 release-keys");
+            property_set("ro.product.device", "htc_pmewl");
+            property_set("ro.build.product", "htc_pmewl");
+            property_set("ro.product.model", "HTC 10");
+            property_set("ro.ril.enable.dtm", "0");
+            property_set("ro.ril.oem.ecclist", "911");
+            property_set("ro.ril.enable.sdr", "1");
+            property_set("ro.ril.disable.cpc", "1");
+            property_set("ro.ril.enable.isr", "1");
+            property_set("ro.ril.radio.svn", "1");
+            property_set("ro.ril.ps_handover", "0");
+            property_set("ro.ril.lte3gpp", "130");
+            property_set("ro.ril.ltefgi.rel9", "2147483648");
+            property_set("ro.ril.set.mtusize", "1430");
+            property_set("ro.ril.fd.pre_r8_tout.scr_off", "3600");
+            property_set("ro.ril.fd.pre_r8_tout.scr_on", "0");
+            property_set("ro.ril.fd.r8_tout.scr_off", "0");
+            property_set("ro.ril.fd.r8_tout.scr_on", "0");
+            property_set("ro.ril.enable.r8fd", "0");
+            property_set("ro.ril.enable.pre_r8fd", "1");
         }
     } else if (strstr(bootmid, "2PS640000")) {
         if (strstr(bootcid, "SPCS_001")) {
