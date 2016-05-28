@@ -35,6 +35,7 @@ on early-init
     mkdir /dsp 0771 media media
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
+    mkdir /firmware/image 0771 system system
     mkdir /firmware/radio 0771 system system
     mkdir /firmware/slpi 0771 system system
     mkdir /firmware/venus 0771 system system
@@ -55,6 +56,15 @@ on init
 
 on fs
     mount_all fstab.qcom
+
+    # symlink firmware to /firmware/image
+    wait /system/bin/sh
+    class_start firmware-link
+    wait /firmware/image/.adsp_done
+    wait /firmware/image/.radio_done
+    wait /firmware/image/.sec_done
+    wait /firmware/image/.venus_done
+    setprop ro.boot.firmware.cpe 1
 
     # HTC feature: Support multiple firmware image mount points
     write /sys/module/firmware_class/parameters/fw_path /firmware/adsp,/firmware/radio,/firmware/slpi,/firmware/venus,/firmware/wsd,/vendor/firmware
@@ -594,6 +604,27 @@ service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     group root
     oneshot
     disabled
+
+# Firmware linking to /firmware/image
+service fwnk-adsp  /system/bin/sh /init.qcom.firmware_links.sh /firmware/adsp /firmware/image "adsp*" adsp
+    class firmware-link
+    oneshot
+
+service fwnk-cpe  /system/bin/sh /init.qcom.firmware_links.sh /firmware/adsp /firmware/image "cpe*" cpe
+    class firmware-link
+    oneshot
+
+service fwnk-radio /system/bin/sh /init.qcom.firmware_links.sh /firmware/radio /firmware/image "modem* mba* radiover* version* qdsp6m* msadp*" radio
+    class firmware-link
+    oneshot
+
+service fwnk-sec  /system/bin/sh /init.qcom.firmware_links.sh /system/etc/firmware /firmware/image "keymaste* gpta*" sec
+    class firmware-link
+    oneshot
+
+service fwnk-venus /system/bin/sh /init.qcom.firmware_links.sh /firmware/venus /firmware/image "venus*" venus
+    class firmware-link
+    oneshot
 
 # Triggers start here
 on class_start:late_start
