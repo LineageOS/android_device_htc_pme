@@ -1153,7 +1153,3 @@ on property:ro.sf=0
     write /sys/kernel/debug/tracing/events/mmcio/enable 1
     write /sys/devices/platform/msm_sdcc.1/perf 1
 
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
