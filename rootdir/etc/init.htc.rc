@@ -63,9 +63,6 @@ service diagloader /sbin/diagloader --diag=htc58diag@#sdcard,#otg,/data --diag=h
     oneshot
 
 #RIL+
-service tftp_server /system/bin/tftp_server
-    class core
-    user root
 #RIL-
 
 on property:sys.mobicore.enable=true
