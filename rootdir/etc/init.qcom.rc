@@ -366,10 +366,6 @@ service audiod /system/bin/audiod
 service charger /charger
     class charger
 
-service clockd /system/bin/clockd
-    class main
-    user root
-
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
