@@ -58,7 +58,7 @@ persist.rild.nitz_short_ons_3=
 ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
-rild.libargs=-d /dev/smd0
+persist.radio.current.cnv=0
 rild.libpath=/system/lib64/libhtc_rilhook.so
 ro.baseband.arch=msm
 ro.ril.telephony.mqanelements=5

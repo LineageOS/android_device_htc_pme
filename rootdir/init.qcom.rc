@@ -31,6 +31,7 @@ import init.qcom.usb.rc
 on early-init
     symlink /data/tombstones /tombstones
 
+    mkdir /carrier 0771 radio radio
     mkdir /dsp 0771 media media
     mkdir /firmware 0771 system system
     mkdir /firmware/adsp 0771 system system
