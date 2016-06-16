@@ -165,8 +165,9 @@ on post-fs-data
     mkdir /data/nfc/param 0770 nfc nfc
 
     # Create directory for perfd
-    mkdir /data/misc/perfd 2755 root system
     mkdir /data/system/perfd 2770 root system
+    rm /data/system/perfd/default_values
+    start perfd
 
     # Create IOP  deamon related dirs
     mkdir /data/misc/iop 0770 root system
