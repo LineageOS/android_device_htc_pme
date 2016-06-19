@@ -500,6 +500,7 @@ service perfd /system/vendor/bin/perfd
     user root
     socket perfd seqpacket 0666 root system
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service iop /system/bin/iop
     class main
@@ -544,6 +545,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
+    writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
