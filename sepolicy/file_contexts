@@ -15,6 +15,9 @@
 /data/fpc(/.*)?                             u:object_r:fingerprintd_data_file:s0
 /sys/devices/soc/soc:fp_fpc1155(/.*)?       u:object_r:sysfs_fingerprint:s0
 
+# Gesture
+/sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion    u:object_r:sysfs_gesture:s0
+
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0
 /dev/block/bootdevice/by-name/rfg_[0-9]+    u:object_r:modem_efs_partition_device:s0
