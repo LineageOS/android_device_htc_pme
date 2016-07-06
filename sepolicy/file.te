@@ -1,4 +1,5 @@
 type clockd_socket, file_type;
 type sysfs_fingerprint, fs_type, sysfs_type;
+type sysfs_gesture, fs_type, sysfs_type;
 type vibeamp_sysfs, fs_type, sysfs_type;
 type carrier_file, fs_type, contextmount_type;
