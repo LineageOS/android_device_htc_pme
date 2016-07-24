@@ -217,6 +217,9 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 # RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl
