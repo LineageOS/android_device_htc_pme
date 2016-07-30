@@ -42,6 +42,11 @@ on early-init
     mkdir /firmware/wsd 0500 rfs rfs
 
 on init
+    # Allow all the cpus to be used for now
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+
     export LD_PRELOAD "liblog_htc.so:libNimsWrap.so"
 
     # Set permissions for persist partition
