@@ -109,4 +109,46 @@ $(VENUS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(VENUS_SYMLINKS)
 
+.PHONY: RFS_LINK_PROCESSING
+RFS_LINK_PROCESSING: $(LOCAL_INSTALLED_MODULE)
+	mkdir -p $(TARGET_OUT)/rfs/apq/gnss/readonly
+	mkdir -p $(TARGET_OUT)/rfs/msm/adsp/readonly
+	mkdir -p $(TARGET_OUT)/rfs/msm/mpss/readonly
+	mkdir -p $(TARGET_OUT)/rfs/mdm/adsp/readonly
+	mkdir -p $(TARGET_OUT)/rfs/mdm/mpss/readonly
+	mkdir -p $(TARGET_OUT)/rfs/mdm/sparrow/readonly
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/apq/gnss/hlos
+	ln -s /data/tombstones/modem $(TARGET_OUT)/rfs/apq/gnss/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/apq/gnss/readonly/firmware
+	ln -s /persist/rfs/apq/gnss $(TARGET_OUT)/rfs/apq/gnss/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/apq/gnss/shared
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/mdm/adsp/hlos
+	ln -s /data/tombstones/lpass $(TARGET_OUT)/rfs/mdm/adsp/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/mdm/adsp/readonly/firmware
+	ln -s /persist/rfs/mdm/adsp $(TARGET_OUT)/rfs/mdm/adsp/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/mdm/adsp/shared
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/mdm/mpss/hlos
+	ln -s /data/tombstones/modem $(TARGET_OUT)/rfs/mdm/mpss/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/mdm/mpss/readonly/firmware
+	ln -s /persist/rfs/mdm/mpss $(TARGET_OUT)/rfs/mdm/mpss/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/mdm/mpss/shared
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/mdm/sparrow/hlos
+	ln -s /data/tombstones/sparrow $(TARGET_OUT)/rfs/mdm/sparrow/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/mdm/sparrow/readonly/firmware
+	ln -s /persist/rfs/mdm/sparrow $(TARGET_OUT)/rfs/mdm/sparrow/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/mdm/sparrow/shared
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/msm/adsp/hlos
+	ln -s /data/tombstones/lpass $(TARGET_OUT)/rfs/msm/adsp/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/msm/adsp/readonly/firmware
+	ln -s /persist/rfs/msm/adsp $(TARGET_OUT)/rfs/msm/adsp/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/msm/adsp/shared
+	ln -s /persist/hlos_rfs/shared $(TARGET_OUT)/rfs/msm/mpss/hlos
+	ln -s /data/tombstones/modem $(TARGET_OUT)/rfs/msm/mpss/ramdumps
+	ln -s /firmware $(TARGET_OUT)/rfs/msm/mpss/readonly/firmware
+	ln -s /firmware/wsd $(TARGET_OUT)/rfs/msm/mpss/readonly/wsd
+	ln -s /persist/rfs/msm/mpss $(TARGET_OUT)/rfs/msm/mpss/readwrite
+	ln -s /persist/rfs/shared $(TARGET_OUT)/rfs/msm/mpss/shared
+
+ALL_DEFAULT_INSTALLED_MODULES += RFS_LINK_PROCESSING
+
 endif
