@@ -644,3 +644,7 @@ service fwnk-venus /system/bin/sh /init.qcom.firmware_links.sh /firmware/venus /
 on class_start:late_start
     # For modem config copy
     write /data/misc/radio/copy_complete 1
+
+service pnpmgr /system/bin/pnpmgr -c /system/etc/pnp.cfg
+    class core
+    user root

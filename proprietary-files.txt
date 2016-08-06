@@ -413,6 +413,10 @@ bin/pm-service
 vendor/lib64/libperipheral_client.so
 vendor/lib/libperipheral_client.so
 
+# Pnp manager
+bin/pnpmgr
+etc/pnp.xml:etc/pnp.cfg
+
 # Postprocessing
 vendor/bin/mm-pp-daemon
 vendor/lib64/libdisp-aba.so
