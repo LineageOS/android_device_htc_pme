@@ -87,11 +87,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/amplifier/tfa9888_init.asq:system/etc/tfa9888_init.asq \
-    $(LOCAL_PATH)/amplifier/tfa9888_enable.asq:system/etc/tfa9888_enable.asq \
-    $(LOCAL_PATH)/amplifier/tfa9888_disable.asq:system/etc/tfa9888_disable.asq
-
 # Browser
 PRODUCT_PACKAGES += \
     Gello
