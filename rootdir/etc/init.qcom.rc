@@ -649,6 +649,10 @@ service pnpmgr /system/bin/pnpmgr -c /system/etc/pnp.cfg
     class core
     user root
 
+service thermal-monitor /system/bin/thermal-monitor
+    class main
+    user root
+
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
