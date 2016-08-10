@@ -10,7 +10,7 @@ LOCAL_C_INCLUDES := \
 	hardware/libhardware/include
 
 LOCAL_SRC_FILES := \
-	audio_amplifier.c
+	audio_amplifier.c tfa.c
 
 LOCAL_MODULE := audio_amplifier.msm8996
 LOCAL_MODULE_RELATIVE_PATH := hw

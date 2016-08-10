@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+/* Implementation notes:
+ *
+ * adev_dot_common + 160 == mixer
+ * tfa_amp_mode_MAYBE = 4 (it would be 5 is wideband was enabled)
+ * tfa_imp_write() looks like it always fails (missing /data/audio/TFA_RE[12])
+ */
+
 #define LOG_TAG "audio_amplifier"
 //#define LOG_NDEBUG 0
 
@@ -25,47 +32,17 @@
 #include <hardware/audio_amplifier.h>
 #include <system/audio.h>
 
-#include <tinyalsa/asoundlib.h>
+#include "tfa.h"
 
 #define UNUSED __attribute__ ((unused))
 
 typedef struct amp_device {
     amplifier_device_t amp_dev;
     audio_mode_t mode;
-    struct mixer *mixer;        /* adev_dot_common + 160 */
+    tfa_t *tfa;
 } amp_device_t;
 
 static amp_device_t *amp_dev = NULL;
-
-#define AMP_MIXER_CTL "Initial external PA"
-
-#if 0
-static int set_clocks_enabled(bool enable)
-{
-    enum mixer_ctl_type type;
-    struct mixer_ctl *ctl;
-
-    if (mixer == NULL) {
-        ALOGE("Error opening mixer 0");
-        return -1;
-    }
-
-    ctl = mixer_get_ctl_by_name(mixer, AMP_MIXER_CTL);
-    if (ctl == NULL) {
-        ALOGE("%s: Could not find %s\n", __func__, AMP_MIXER_CTL);
-        return -ENODEV;
-    }
-
-    type = mixer_ctl_get_type(ctl);
-    if (type != MIXER_CTL_TYPE_ENUM) {
-        ALOGE("%s: %s is not supported\n", __func__, AMP_MIXER_CTL);
-        return -ENOTTY;
-    }
-
-    mixer_ctl_set_value(ctl, 0, enable);
-    return 0;
-}
-#endif
 
 static int amp_set_mode(struct amplifier_device *device, audio_mode_t mode)
 {
@@ -96,25 +73,74 @@ static int amp_dev_close(hw_device_t *device)
 {
     amp_device_t *dev = (amp_device_t *) device;
 
-    mixer_close(dev->mixer);
+    tfa_destroy(dev->tfa);
     free(dev);
 
     return 0;
+}
+
+static void set_imp(amp_device_t *amp_dev, int is_right)
+{
+    int ohm = -1;
+    const char *which = is_right ? "right" : "left";
+
+    if (tfa_imp_check(amp_dev->tfa, &ohm, is_right)) {
+        ALOGI("%s impedence is %d\n", which, ohm);
+    } else {
+        ALOGI("%s impedence data unacceptable %d, set it\n", which, ohm);
+        if (tfa_imp_set(amp_dev->tfa, is_right)) {
+            ALOGI("failed to set %s impedence", which);
+        }
+        if (tfa_imp_check(amp_dev->tfa, &ohm, is_right)) {
+            ALOGI("%s impedence is %d\n", which, ohm);
+        }
+    }
+}
+
+#define DEFAULT_CNT_FILE "/system/etc/Tfa98xx.cnt"
+
+static void tfa_init(amp_device_t *amp_dev)
+{
+    int retry;
+
+    for (retry = 0; retry < 2; retry++ ) {
+        if (tfa_cnt_loadfile(amp_dev->tfa, DEFAULT_CNT_FILE, 0)) {
+            ALOGI("loaded: %s", DEFAULT_CNT_FILE);
+            break;
+        }
+        ALOGI("failed to load default cnt file: %s", DEFAULT_CNT_FILE);
+        usleep(10000);
+    }
+
+    if (retry >= 2) {
+        ALOGI("failed to initialize amp, set default imp and MTPEX");
+        set_imp(amp_dev, 0);
+        set_imp(amp_dev, 1);
+        tfa_imp_set(amp_dev->tfa, -1);
+    }
 }
 
 static int amp_module_open(const hw_module_t *module, const char *name UNUSED,
         hw_device_t **device)
 {
     int ret;
+    tfa_t *tfa;
 
     if (amp_dev) {
         ALOGE("%s:%d: Unable to open second instance of the amplifier\n", __func__, __LINE__);
         return -EBUSY;
     }
 
+    tfa = tfa_new();
+    if (!tfa) {
+        ALOGE("%s:%d: Unable to tfa lib\n", __func__, __LINE__);
+        return -ENOENT;
+    }
+
     amp_dev = calloc(1, sizeof(amp_device_t));
     if (!amp_dev) {
         ALOGE("%s:%d: Unable to allocate memory for amplifier device\n", __func__, __LINE__);
+        tfa_destroy(tfa);
         return -ENOMEM;
     }
 
@@ -133,7 +159,9 @@ static int amp_module_open(const hw_module_t *module, const char *name UNUSED,
     amp_dev->amp_dev.output_stream_standby = NULL;
     amp_dev->amp_dev.input_stream_standby = NULL;
 
-    amp_dev->mixer = mixer_open(0);
+    amp_dev->tfa = tfa;
+
+    tfa_init(amp_dev);
 
     *device = (hw_device_t *) amp_dev;
 
