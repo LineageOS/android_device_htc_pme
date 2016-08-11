@@ -648,8 +648,3 @@ on class_start:late_start
 service pnpmgr /system/bin/pnpmgr -c /system/etc/pnp.cfg
     class core
     user root
-
-service atfwd /system/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio

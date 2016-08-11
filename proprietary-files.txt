@@ -465,7 +465,6 @@ vendor/lib/libqmi.so
 vendor/lib/libsmemlog.so
 
 # Radio
-bin/ATFWD-daemon
 bin/netmgrd
 bin/qmuxd
 bin/radish
