@@ -58,6 +58,7 @@ persist.rild.nitz_short_ons_3=
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+ro.sys.fw.bg_apps_limit=60
 
 # Radio
 rild.libpath=/system/lib64/libhtc_rilhook.so
