@@ -166,6 +166,12 @@ on early-boot
     # set aggressive read ahead during boot up.
     write /sys/block/dm-0/queue/read_ahead_kb 2048
 
+    # SSR Setup
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
+
 on boot
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_audio 0770 media audio
