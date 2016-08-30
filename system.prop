@@ -44,6 +44,11 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 # Fast charge
 persist.hvdcp.allow_opti=1
 
+# GPS
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.location
+ro.gps.agps_provider=1
+
 # Low power for encoder
 vidc.debug.perf.mode=2
 
