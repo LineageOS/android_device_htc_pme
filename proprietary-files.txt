@@ -28,6 +28,9 @@ etc/Hdmi_cal.acdb
 etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
 
+# Audio amplifier
+etc/Tfa98xx.cnt
+
 # Audio libraries
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
