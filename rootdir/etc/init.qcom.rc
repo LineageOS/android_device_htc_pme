@@ -48,7 +48,7 @@ on init
     write /dev/cpuset/foreground/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-3
 
-    export LD_PRELOAD "liblog_htc.so:libNimsWrap.so"
+    export LD_SHIM_LIBS "/system/lib/liblog.so|/system/lib/liblog_htc.so:/system/lib64/liblog.so|/system/lib64/liblog_htc.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
