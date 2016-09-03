@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_b6c85b55",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2016-09-03T12:08:37Z",
+      "side": 1,
+      "message": "The LD_PRELOAD of libNimsWrap.so is coming from the stock ramdisk.  I have no idea if it is really needed but HTC is shipping like that.",
+      "revId": "eee666c311200146c5752151333d4c7088cd4d2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
