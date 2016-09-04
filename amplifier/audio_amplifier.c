@@ -23,6 +23,7 @@
 #include <cutils/str_parms.h>
 
 #include <hardware/audio_amplifier.h>
+#include <msm8974/platform.h>
 #include <system/audio.h>
 
 #include "tfa.h"
@@ -49,23 +50,127 @@ static int amp_set_mode(struct amplifier_device *device, audio_mode_t mode)
     return ret;
 }
 
-#define TFA_DEVICE_MASK (AUDIO_DEVICE_OUT_EARPIECE | AUDIO_DEVICE_OUT_SPEAKER)
+#define PROFILE_MUSIC           0
+#define PROFILE_RINGTONE        1
+#define PROFILE_FM              2
+#define PROFILE_VIDEO_RECORD    3
+#define PROFILE_HANDSFREE_NB    4
+#define PROFILE_HANDSFREE_WB    5
+#define PROFILE_HANDSFREE_SWB   6
+#define PROFILE_HANDSET         7
+#define PROFILE_VOIP            8
+#define PROFILE_MFG             9
+#define PROFILE_AUDIO_EVALUATION 10
+#define PROFILE_CALIBRATION     11
 
-static int amp_enable_output_devices(struct amplifier_device *device, uint32_t devices, bool enable)
+enum {
+    IS_EARPIECE, IS_SPEAKER, IS_VOIP, IS_OTHER
+};
+
+static int classify_snd_device(uint32_t snd_device)
+{
+    switch(snd_device) {
+    case SND_DEVICE_OUT_HANDSET:
+    case SND_DEVICE_OUT_VOICE_HANDSET:
+        return IS_EARPIECE;
+
+    case SND_DEVICE_OUT_SPEAKER:
+    case SND_DEVICE_OUT_VOICE_SPEAKER:
+        return IS_SPEAKER;
+
+    case SND_DEVICE_OUT_VOICE_TX:
+        return IS_VOIP;
+
+    case SND_DEVICE_OUT_SPEAKER_EXTERNAL_1:
+    case SND_DEVICE_OUT_SPEAKER_EXTERNAL_2:
+    case SND_DEVICE_OUT_SPEAKER_REVERSE:
+    case SND_DEVICE_OUT_SPEAKER_VBAT:
+    case SND_DEVICE_OUT_LINE:
+    case SND_DEVICE_OUT_HEADPHONES:
+    case SND_DEVICE_OUT_HEADPHONES_44_1:
+    case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
+    case SND_DEVICE_OUT_SPEAKER_AND_LINE:
+    case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_EXTERNAL_1:
+    case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_EXTERNAL_2:
+    case SND_DEVICE_OUT_VOICE_SPEAKER_VBAT:
+    case SND_DEVICE_OUT_VOICE_HEADPHONES:
+    case SND_DEVICE_OUT_VOICE_LINE:
+    case SND_DEVICE_OUT_HDMI:
+    case SND_DEVICE_OUT_SPEAKER_AND_HDMI:
+    case SND_DEVICE_OUT_BT_SCO:
+    case SND_DEVICE_OUT_BT_SCO_WB:
+    case SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES:
+    case SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES:
+    case SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET:
+    case SND_DEVICE_OUT_AFE_PROXY:
+    case SND_DEVICE_OUT_USB_HEADSET:
+    case SND_DEVICE_OUT_SPEAKER_AND_USB_HEADSET:
+    case SND_DEVICE_OUT_TRANSMISSION_FM:
+    case SND_DEVICE_OUT_ANC_HEADSET:
+    case SND_DEVICE_OUT_ANC_FB_HEADSET:
+    case SND_DEVICE_OUT_VOICE_ANC_HEADSET:
+    case SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET:
+    case SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET:
+    case SND_DEVICE_OUT_ANC_HANDSET:
+    case SND_DEVICE_OUT_SPEAKER_PROTECTED:
+    case SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED:
+    case SND_DEVICE_OUT_SPEAKER_PROTECTED_VBAT:
+    case SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED_VBAT:
+    case SND_DEVICE_OUT_SPEAKER_WSA:
+    case SND_DEVICE_OUT_VOICE_SPEAKER_WSA:
+    default:
+        return IS_OTHER;
+    }
+}
+
+
+static int select_profile(audio_mode_t mode, uint32_t snd_device)
+{
+    uint32_t device_class = classify_snd_device(snd_device);
+
+    ALOGV("%s: mode %d devices 0x%x class %d", __func__, mode, snd_device, device_class);
+    switch(mode) {
+    case AUDIO_MODE_RINGTONE:
+        return PROFILE_RINGTONE;
+    case AUDIO_MODE_IN_COMMUNICATION:
+        return PROFILE_VOIP;
+    case AUDIO_MODE_NORMAL:
+    case AUDIO_MODE_IN_CALL:
+        if (device_class == IS_EARPIECE) {
+            return PROFILE_HANDSET;
+        } else {
+            return PROFILE_MUSIC;
+        }
+    default:
+        switch(device_class) {
+        case IS_EARPIECE:
+            return PROFILE_HANDSET;
+        case IS_SPEAKER:
+            return PROFILE_MUSIC;
+        case IS_VOIP:
+            return PROFILE_VOIP;
+        default:
+            return -1;
+        }
+    }
+}
+
+static int amp_enable_output_devices(struct amplifier_device *device, uint32_t snd_device, bool enable)
 {
     amp_device_t *dev = (amp_device_t *) device;
-    int ret;
-
-    if ((devices & TFA_DEVICE_MASK) != 0) {
-        if (enable && !dev->pcm) {
-            // TODO figure out the right profile based on the output devices
-            dev->pcm = tfa_clocks_on(dev->tfa);
-            tfa_start(dev->tfa, dev->tc, 0, 0);
-        } else {
+    int profile = select_profile(dev->mode, snd_device);
+    if (profile < 0 || !enable) {
+        if (dev->pcm) {
             tfa_clocks_off(dev->tfa, dev->pcm);
             tfa_stop(dev->tfa);
             dev->pcm = NULL;
         }
+    } else {
+        if (!dev->pcm) {
+            dev->pcm = tfa_clocks_on(dev->tfa);
+        }
+        ALOGV("%s: starting profile %d vstep <hardcoded to 0>", __func__, profile);
+        tfa_start(dev->tfa, dev->tc, profile, 0);
     }
 
     return 0;
