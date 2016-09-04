@@ -7,7 +7,8 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES := \
         external/tinyalsa/include \
-	hardware/libhardware/include
+       hardware/libhardware/include \
+       $(call project-path-for,qcom-audio)/hal
 
 LOCAL_SRC_FILES := \
 	audio_amplifier.c tfa.c tfa-cont.c
