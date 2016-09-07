@@ -41,6 +41,12 @@
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
     </bit_width_configs>
+    <device_names>
+         <device name="SND_DEVICE_OUT_VOICE_HANDSET" alias="earpiece-voice" />
+         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" alias="speaker-voice" />
+         <device name="SND_DEVICE_IN_VOICE_DMIC" alias="dmic-endfire" />
+         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="speaker-dmic-endfire" />
+    </device_names>
     <native_configs>
         <feature name="NATIVE_AUDIO_44.1" codec_support="1"/>
     </native_configs>
