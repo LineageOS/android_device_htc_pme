@@ -1,8 +1,10 @@
 # Audio
+audio_hal.period_size=192
 audio.offload.buffer.size.kb=1024
 audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+af.fast_track_multiplier=1
 av.offload.enable=true
 
 ro.qc.sdk.audio.fluencetype=fluence
