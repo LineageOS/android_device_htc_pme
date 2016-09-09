@@ -127,6 +127,9 @@ BOARD_HARDWARE_CLASS += \
     $(DEVICE_PATH)/cmhw \
     hardware/cyanogen/cmhw
 
+# CNE
+TARGET_LDPRELOAD := libNimsWrap.so
+
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
