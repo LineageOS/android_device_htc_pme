@@ -229,6 +229,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libhtcril_db \
+    libprotobuf-cpp-full \
     librmnetctl
 
 # Wifi
