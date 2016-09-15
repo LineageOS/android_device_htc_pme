@@ -63,6 +63,7 @@ ro.vendor.extension_library=libqti-perfd-client.so
 rild.libpath=/system/lib64/libhtc_rilhook.so
 ro.baseband.arch=msm
 ro.ril.telephony.mqanelements=5
+ro.telephony.default_network=9
 ro.telephony.call_ring.multiple=false
 persist.radio.NETWORK_SWITCH=1
 persist.radio.fill_eons=1
