@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_e2b6dffa",
+        "filename": "configs/camera/msm8996_camera.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-18T08:43:20Z",
+      "side": 1,
+      "message": "Hurr durr",
+      "revId": "b65f9381dbce72bfe24b1b951b7845aecd4f8f50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
