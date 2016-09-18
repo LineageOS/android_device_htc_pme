@@ -97,6 +97,11 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/camera/imx377_chromatix.xml:system/etc/camera/imx377_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/msm8996_camera.xml:system/etc/camera/msm8996_camera.xml \
+    $(LOCAL_PATH)/configs/camera/imx377_chromatix.xml:system/etc/camera/s5k4e6_htc_chromatix.xml
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8996 \
