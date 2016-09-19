@@ -53,6 +53,9 @@ vendor/lib/soundfx/libswdap.so
 
 # Camera
 bin/mm-qcamera-daemon
+etc/camera/imx377_chromatix.xml
+etc/camera/msm8996_camera.xml
+etc/camera/s5k4e6_htc_chromatix.xml
 lib/hw/camera.msm8996.so
 lib/libawb_calibration.so
 lib/libBeautyChat.so
