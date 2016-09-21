@@ -40,6 +40,8 @@ on early-init
     mkdir /firmware/slpi 0771 system system
     mkdir /firmware/venus 0771 system system
     mkdir /firmware/wsd 0500 rfs rfs
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
 
 on init
     export LD_SHIM_LIBS "/system/lib/liblog.so|/system/lib/liblog_htc.so:/system/lib64/liblog.so|/system/lib64/liblog_htc.so"
