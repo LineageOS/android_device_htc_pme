@@ -475,7 +475,7 @@ static void speaker_boost(tfa_t *t, tfa_cont_t *tc, int force_startup, int profi
 
 void tfa_start(tfa_t *t, tfa_cont_t *tc, int profile_num, int vstep)
 {
-    int loading_calibration;
+    int loading_calibration = 0;
 
     if (tfa_get_swprof(t) == -1) {
         if (profile_num <= 0) {
