@@ -461,8 +461,7 @@ static void speaker_boost(tfa_t *t, tfa_cont_t *tc, int force_startup, int profi
         cold_startup(t, tc, profile_num);
     }
 
-    if (!t->speaker_boost_initialized || tfa_get_bitfield(t, BF_FLAG_COLD_STARTED)) {
-        t->speaker_boost_initialized = 1;
+    if (tfa_get_bitfield(t, BF_FLAG_COLD_STARTED)) {
         int swvstep = speaker_startup(t, tc, force_startup, profile_num);
         tfa_set_swprof(t, profile_num);
         tfa_set_swvstep(t, swvstep);
