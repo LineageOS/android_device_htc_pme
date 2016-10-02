@@ -83,17 +83,6 @@ static int amp_dev_close(hw_device_t *device)
     return 0;
 }
 
-static void init(void)
-{
-    struct pcm *pcm;
-
-    pcm = tfa_clocks_on(amp_dev->tfa);
-    tfa_start(amp_dev->tfa, amp_dev->tc, 0, 0);
-    tfa_clocks_off(amp_dev->tfa, pcm);
-
-    tfa_stop(amp_dev->tfa);
-}
-
 static int amp_module_open(const hw_module_t *module, const char *name UNUSED,
         hw_device_t **device)
 {
@@ -142,8 +131,6 @@ static int amp_module_open(const hw_module_t *module, const char *name UNUSED,
 
     amp_dev->tfa = tfa;
     amp_dev->tc  = tc;
-
-    init();
 
     *device = (hw_device_t *) amp_dev;
 
