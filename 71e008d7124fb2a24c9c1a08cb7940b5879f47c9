@@ -16,6 +16,24 @@
       "revId": "71e008d7124fb2a24c9c1a08cb7940b5879f47c9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_d7d9fef4",
+        "filename": "amplifier/audio_amplifier.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-10-02T10:27:55Z",
+      "side": 0,
+      "message": "Isn\u0027t that exactly the same as in line 63 though?\nBefore any output is actually done on the amp/speaker, amp_enable_output_devices is called and thus should do the calibration anyways, no?\n\nI just compared the behavior with and without this patch, I cannot see/hear a difference..\nIf you want me to check parameters at runtime, I can do that.",
+      "parentUuid": "ff2e2bb8_7760f233",
+      "revId": "71e008d7124fb2a24c9c1a08cb7940b5879f47c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
