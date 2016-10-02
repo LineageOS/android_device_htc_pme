@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_7760f233",
+        "filename": "amplifier/audio_amplifier.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2016-10-02T09:55:32Z",
+      "side": 0,
+      "message": "This causes the amplifier to load the calibration sequence.",
+      "revId": "71e008d7124fb2a24c9c1a08cb7940b5879f47c9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
