@@ -490,8 +490,6 @@ bin/rmt_storage
 framework/qcnvitems.jar
 framework/qcrilhook.jar
 lib64/libhtc_rilhook.so
--lib64/libril.so
--lib/libril.so
 priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib64/libcneapiclient.so
