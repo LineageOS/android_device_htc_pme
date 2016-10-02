@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_497a7288",
+        "filename": "amplifier/audio_amplifier.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-10-02T16:23:04Z",
+      "side": 1,
+      "message": "FYI, I tested this with vstep 0 and 1 today but couldn\u0027t notice a difference :/",
+      "revId": "658d140c149f10567a518753bbffbddf8a16d9ca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
