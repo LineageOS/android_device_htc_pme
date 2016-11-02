@@ -11,7 +11,7 @@ LOCAL_C_INCLUDES := \
        $(call project-path-for,qcom-audio)/hal
 
 LOCAL_SRC_FILES := \
-	audio_amplifier.c tfa.c tfa-cont.c
+	audio_amplifier.c tfa.c tfa-cont.c tfa9888-debug.c
 
 LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
