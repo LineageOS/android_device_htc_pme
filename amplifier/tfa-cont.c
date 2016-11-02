@@ -577,7 +577,7 @@ void tfa_cont_write_profile(tfa_cont_t *tc, int prof_num, int vstep, tfa_t *t)
     ALOGI("writing profile %d", prof_num);
     // (T < 4 || T == 6 || T == 7 || T == 16 || T >= 18) {
 #   define VALID_ON ((0xf) | (1<<6) | (1<<7) | (1<<16) | (UINT_MAX>>18<<18))
-    write_items(tc, profile, ALL, VALID_ON, vstep, t);
+    write_items(tc, profile, ON, VALID_ON, vstep, t);
 
     if (swprof->group != profile->group || !profile->group) {
         tfa_set_bitfield(t, BF_SRC_SET_CONFIGURED, 1);
