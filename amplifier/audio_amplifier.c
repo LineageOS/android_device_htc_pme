@@ -28,6 +28,7 @@
 
 #include "tfa.h"
 #include "tfa-cont.h"
+#include "tfa9888.h"
 
 #define UNUSED __attribute__ ((unused))
 
@@ -155,12 +156,70 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
     }
 }
 
+#if 1
+static void enable_rcv_mode(amp_device_t *dev)
+{
+    tfa_set_bitfield(dev->tfa, BF_ENBL_COOLFLUX, 0);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_BOOST, 0);
+    tfa_set_bitfield(dev->tfa, BF_SEL_ENBL_AMPLIFIER, 0);
+    tfa_set_bitfield(dev->tfa, BF_VAMP_SEL, 0);
+    tfa_set_bitfield(dev->tfa, BF_CTRL_RCVLDOP_BYPASS, 0);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_SPKR_SS_RIGHT, 0);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_PDM_SS, 0);
+    tfa_set_bitfield(dev->tfa, BF_SIDE_TONE_GAIN, 425);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_CMFB_LEFT, 0);
+    tfa_set_bitfield(dev->tfa, BF_BYPASS_MICVDD_OCP, 0);
+    tfa_set_bitfield(dev->tfa, BF_CTRL_RCV, 1);
+
+    /* Turn on TFA */
+    tfa_set_bitfield(dev->tfa, BF_POWERDOWN, 0);
+    tfa_set_bitfield(dev->tfa, BF_VAMP_SEL, 2);
+}
+
+static void disable_rcv_mode(amp_device_t *dev)
+{
+    tfa_set_bitfield(dev->tfa, BF_ENBL_COOLFLUX, 1);
+    tfa_set_bitfield(dev->tfa, BF_SEL_ENBL_AMPLIFIER, 1);
+    tfa_set_bitfield(dev->tfa, BF_VAMP_SEL, 1);
+    tfa_set_bitfield(dev->tfa, BF_CTRL_RCVLDOP_BYPASS, 1);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_SPKR_SS_RIGHT, 1);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_PDM_SS, 1);
+    tfa_set_bitfield(dev->tfa, BF_SIDE_TONE_GAIN, 425);
+    tfa_set_bitfield(dev->tfa, BF_ENBL_CMFB_LEFT, 0);
+    tfa_set_bitfield(dev->tfa, BF_CTRL_RCV, 0);
+
+    /* Turn on TFA */
+    tfa_set_bitfield(dev->tfa, BF_POWERDOWN, 0);
+    tfa_set_bitfield(dev->tfa, BF_VAMP_SEL, 0);
+}
+
+#else
+
+static void enable_bypass_mode(amp_device_t *dev)
+{
+    tfa_set_bitfield(dev->tfa, BF_BYPASS_OCP, 1);
+    tfa_set_bitfield(dev->tfa, BF_SRC_SET_CONFIGURED, 0);
+    tfa_set_bitfield(dev->tfa, BF_SRC_SET_CONFIGURED, 1);
+    tfa_set_bitfield(dev->tfa, BF_AUDIO_FS, 0);
+    tfa_set_bitfield(dev->tfa, BF_INPUT_LEVEL, 1);
+}
+
+static void disable_bypass_mode(amp_device_t *dev)
+{
+    tfa_set_bitfield(dev->tfa, BF_BYPASS_OCP, 0);
+    tfa_set_bitfield(dev->tfa, BF_SRC_SET_CONFIGURED, 0);
+    tfa_set_bitfield(dev->tfa, BF_SRC_SET_CONFIGURED, 1);
+}
+
+#endif
+
 static int amp_enable_output_devices(struct amplifier_device *device, uint32_t snd_device, bool enable)
 {
     amp_device_t *dev = (amp_device_t *) device;
     int profile = select_profile(dev->mode, snd_device);
     if (profile < 0 || !enable) {
         if (dev->pcm) {
+            disable_rcv_mode(dev);
             tfa_clocks_off(dev->tfa, dev->pcm);
             tfa_stop(dev->tfa);
             dev->pcm = NULL;
@@ -170,7 +229,8 @@ static int amp_enable_output_devices(struct amplifier_device *device, uint32_t s
             dev->pcm = tfa_clocks_on(dev->tfa);
         }
         ALOGV("%s: starting profile %d vstep <hardcoded to 0>", __func__, profile);
-        tfa_start(dev->tfa, dev->tc, profile, 0);
+        //tfa_start(dev->tfa, dev->tc, profile, 0);
+        enable_rcv_mode(dev);
     }
 
     return 0;
@@ -247,8 +307,6 @@ static int amp_module_open(const hw_module_t *module, const char *name UNUSED,
 
     amp_dev->tfa = tfa;
     amp_dev->tc  = tc;
-
-    init();
 
     *device = (hw_device_t *) amp_dev;
 
