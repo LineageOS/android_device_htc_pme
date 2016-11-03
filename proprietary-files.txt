@@ -59,7 +59,6 @@ etc/camera/s5k4e6_htc_chromatix.xml
 lib/hw/camera.msm8996.so
 lib/libawb_calibration.so
 lib/libBeautyChat.so
-lib/libcameraface.so
 lib/libcamerapp.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
