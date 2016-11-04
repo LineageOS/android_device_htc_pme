@@ -19,9 +19,7 @@
 
 #define BTM_DEF_LOCAL_NAME   "HTC 10"
 
-#define BLE_VND_INCLUDED TRUE
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+#define BLE_VND_INCLUDED                TRUE
+#define BLUETOOTH_QTI_SW                TRUE
 
-#define BTM_WBS_INCLUDED TRUE
-#define BTIF_HF_WBS_PREFERRED TRUE
 #endif
