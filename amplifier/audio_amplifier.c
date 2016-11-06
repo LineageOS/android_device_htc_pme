@@ -28,6 +28,9 @@
 
 #include "tfa.h"
 #include "tfa-cont.h"
+#include "tfa9888.h"
+
+#define FORCED_GAIN 50
 
 #define UNUSED __attribute__ ((unused))
 
@@ -194,6 +197,7 @@ static void init(void)
 
     pcm = tfa_clocks_on(amp_dev->tfa);
     tfa_start(amp_dev->tfa, amp_dev->tc, 0, 0);
+    tfa_set_bitfield(amp_dev->tfa, BF_GAIN, FORCED_GAIN);
     tfa_clocks_off(amp_dev->tfa, pcm);
 
     tfa_stop(amp_dev->tfa);
