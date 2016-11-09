@@ -30,7 +30,7 @@
 #include "tfa-cont.h"
 #include "tfa9888.h"
 
-#define FORCED_GAIN 50
+#define FORCED_GAIN 75
 
 #define UNUSED __attribute__ ((unused))
 
