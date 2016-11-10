@@ -30,7 +30,8 @@
 #include "tfa-cont.h"
 #include "tfa9888.h"
 
-#define FORCED_GAIN 75
+#define FORCED_GAIN             75
+#define FORCED_GAIN_EARPIECE    100
 
 #define UNUSED __attribute__ ((unused))
 
@@ -158,6 +159,24 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
     }
 }
 
+static void do_set_gain(amp_device_t *amp_dev, uint32_t gain)
+{
+    ALOGV("setting gain to %u", gain);
+    tfa_set_bitfield(amp_dev->tfa, BF_GAIN, gain);
+}
+
+static void set_gain(amp_device_t *dev, uint32_t snd_device)
+{
+    switch(classify_snd_device(snd_device)) {
+    case IS_EARPIECE:
+        do_set_gain(dev, FORCED_GAIN_EARPIECE);
+        break;
+    default:
+        do_set_gain(dev, FORCED_GAIN);
+        break;
+    }
+}
+
 static int amp_enable_output_devices(struct amplifier_device *device, uint32_t snd_device, bool enable)
 {
     amp_device_t *dev = (amp_device_t *) device;
@@ -174,6 +193,7 @@ static int amp_enable_output_devices(struct amplifier_device *device, uint32_t s
         }
         ALOGV("%s: starting profile %d vstep <hardcoded to 0>", __func__, profile);
         tfa_start(dev->tfa, dev->tc, profile, 0);
+        set_gain(dev, snd_device);
     }
 
     return 0;
@@ -197,7 +217,6 @@ static void init(void)
 
     pcm = tfa_clocks_on(amp_dev->tfa);
     tfa_start(amp_dev->tfa, amp_dev->tc, 0, 0);
-    tfa_set_bitfield(amp_dev->tfa, BF_GAIN, FORCED_GAIN);
     tfa_clocks_off(amp_dev->tfa, pcm);
 
     tfa_stop(amp_dev->tfa);
