@@ -30,6 +30,7 @@
 #include "tfa-cont.h"
 #include "tfa9888.h"
 
+#define VSTEP                   0
 #define FORCED_GAIN             75
 #define FORCED_GAIN_EARPIECE    100
 
@@ -191,8 +192,8 @@ static int amp_enable_output_devices(struct amplifier_device *device, uint32_t s
         if (!dev->pcm) {
             dev->pcm = tfa_clocks_on(dev->tfa);
         }
-        ALOGV("%s: starting profile %d vstep <hardcoded to 0>", __func__, profile);
-        tfa_start(dev->tfa, dev->tc, profile, 0);
+        ALOGV("%s: starting profile %d vstep <hardcoded to %d>", __func__, profile, VSTEP);
+        tfa_start(dev->tfa, dev->tc, profile, VSTEP);
         set_gain(dev, snd_device);
     }
 
