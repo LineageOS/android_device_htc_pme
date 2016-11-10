@@ -143,7 +143,7 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
     case AUDIO_MODE_IN_CALL:
         if (device_class == IS_EARPIECE) {
             return PROFILE_HANDSET;
-        } else {
+        } else if (device_class == IS_SPEAKER) {
             return PROFILE_MUSIC;
         }
     default:
