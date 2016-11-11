@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff2e2bb8_4765d2e0",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2016-11-11T13:29:29Z",
+      "side": 1,
+      "message": "True.  I left it here when updating this commit because if I deleted it completely I know someone will come along and add it as \"true\" because they\u0027ll think we forgot.\n\nThis makes a clear statement that this is what I really want because that\u0027s what our stock software has.",
+      "parentUuid": "ff2e2bb8_6489f4c8",
+      "revId": "7ed769821d4fd647a49ba5849dd78fed98374fd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff2e2bb8_84efd8ae",
         "filename": "overlay/frameworks/base/packages/SystemUI/res/values/config.xml",
         "patchSetId": 5
