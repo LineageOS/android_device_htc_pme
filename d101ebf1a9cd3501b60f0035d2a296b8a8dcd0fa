@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_c4bba0c1",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2016-11-11T10:32:05Z",
+      "side": 1,
+      "message": "Don\u0027t you want to enable it?",
+      "range": {
+        "startLine": 326,
+        "startChar": 63,
+        "endLine": 326,
+        "endChar": 68
+      },
+      "revId": "d101ebf1a9cd3501b60f0035d2a296b8a8dcd0fa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
