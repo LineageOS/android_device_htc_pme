@@ -623,7 +623,6 @@ lib/hw/sensors.msm8996.so
 lib/libmorpho_movie_stabilizer4.so
 lib/libprojector.so
 lib64/libprojector.so
-vendor/firmware/libpn548_fw.so
 vendor/lib/hw/activity_recognition.msm8996.so
 vendor/lib/hw/keystore.msm8996.so
 vendor/lib/hw/sound_trigger.primary.msm8996.so
