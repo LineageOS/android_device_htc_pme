@@ -43,6 +43,7 @@ void cdma_properties(char const default_network[])
     property_set("ro.ril.enable.gea3", "1");
     property_set("ro.ril.enable.r8fd", "1");
     property_set("ro.telephony.ipv6_capability", "1");
+    property_set("ro.ril.force_eri_from_xml", "true");
 }
 
 void gsm_properties(char const default_network[])
