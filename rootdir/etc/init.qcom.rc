@@ -462,6 +462,7 @@ on property:sys.shutdown.requested=*
 service perfd /system/vendor/bin/perfd
     class main
     user root
+    socket perfd seqpacket 0666 root system
     disabled
 
 service ppd /system/vendor/bin/mm-pp-daemon
