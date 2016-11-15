@@ -152,6 +152,9 @@ on post-fs-data
     mkdir /data/misc/perfd 2755 root system
     mkdir /data/system/perfd 2770 root system
 
+    # Create IOP  deamon related dirs
+    mkdir /data/misc/iop 0770 root system
+
     # Create directory for time-services
     mkdir /data/time/ 0700 system system
 
@@ -464,6 +467,14 @@ service perfd /system/vendor/bin/perfd
     user root
     socket perfd seqpacket 0666 root system
     disabled
+
+service iop /system/bin/iop
+    class main
+    user root
+    group root
+    socket iop seqpacket 0666 root system
+    disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service ppd /system/vendor/bin/mm-pp-daemon
     class late_start

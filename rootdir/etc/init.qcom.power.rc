@@ -106,6 +106,9 @@ on enable-low-power
     rm /data/system/perfd/default_values
     start perfd
 
+    # Starting io prefetcher service
+    start iop
+
 on class_start:late_start
     trigger enable-low-power
 
