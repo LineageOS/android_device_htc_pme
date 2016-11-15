@@ -109,6 +109,19 @@ $(VENUS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(VENUS_SYMLINKS)
 
+WIDEVINE_IMAGES := \
+    windevine.b00 windevine.b01 windevine.b02 windevine.b03 windevine.b04 \
+    windevine.b05 windevine.b06 windevine.mdt
+
+WIDEVINE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(WIDEVINE_IMAGES)))
+$(WIDEVINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "WIDEVINE firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/etc/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WIDEVINE_SYMLINKS)
+
 .PHONY: RFS_LINK_PROCESSING
 RFS_LINK_PROCESSING: $(LOCAL_INSTALLED_MODULE)
 	mkdir -p $(TARGET_OUT)/rfs/apq/gnss/readonly
