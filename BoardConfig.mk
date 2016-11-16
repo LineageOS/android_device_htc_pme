@@ -46,19 +46,17 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8996
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := ehci-hcd.park=3 androidboot.bootdevice=7464900.sdhci lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff androidboot.hardware=qcom androidboot.selinux=permissive
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_DTBTOOL_ARGS := -3
 BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_CMDLINE := ehci-hcd.park=3 androidboot.bootdevice=7464900.sdhci lpm_levels.sleep_disabled=1 cma=16M@0-0xffffffff androidboot.hardware=qcom androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x02000000
 BOARD_RAMDISK_OFFSET     := 0x02200000
-
+TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8996
 TARGET_KERNEL_CONFIG := cyanogenmod_pme_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_USES_UNCOMPRESSED_KERNEL := false
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
