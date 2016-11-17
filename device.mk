@@ -224,10 +224,6 @@ PRODUCT_PACKAGES += \
     libhtcril_db \
     librmnetctl
 
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
-
 # Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \

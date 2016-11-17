@@ -68,7 +68,8 @@ PRODUCT_PACKAGES += \\
     TimeService \\
     libril \\
     libtime_genoff \\
-    libTimeService
+    libTimeService \\
+    libthermalclient
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -175,6 +176,20 @@ LOCAL_MULTILIB := both
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_SRC_FILES_64 := proprietary/vendor/lib64/libTimeService.so
 LOCAL_SRC_FILES_32 := proprietary/vendor/lib/libTimeService.so
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := libthermalclient
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_MODULE_PATH_64 := \$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
+LOCAL_MODULE_PATH_32 := \$(2ND_TARGET_OUT_VENDOR_SHARED_LIBRARIES)
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MODULE_TAGS := optional
+LOCAL_MULTILIB := both
+OCAL_PROPRIETARY_MODULE := true
+LOCAL_SRC_FILES_64 := proprietary/vendor/lib64/libthermalclient.so
+LOCAL_SRC_FILES_32 := proprietary/vendor/lib/libthermalclient.so
 include \$(BUILD_PREBUILT)
 
 endif

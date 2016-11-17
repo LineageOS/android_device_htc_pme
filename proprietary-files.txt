@@ -431,10 +431,6 @@ bin/pm-service
 vendor/lib64/libperipheral_client.so
 vendor/lib/libperipheral_client.so
 
-# Pnp manager
-bin/pnpmgr
-etc/pnp.xml:etc/pnp.cfg
-
 # Postprocessing
 vendor/bin/mm-pp-daemon
 vendor/lib64/libdisp-aba.so
@@ -509,10 +505,11 @@ vendor/lib64/libxml.so
 lib64/hw/sensors.msm8996.so
 
 # Thermal
+etc/thermal-engine.conf
 vendor/bin/thermal-engine
-vendor/lib64/libthermalclient.so
+-vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
-vendor/lib/libthermalclient.so
+-vendor/lib/libthermalclient.so
 
 # Time services
 -app/TimeService/TimeService.apk
@@ -544,7 +541,6 @@ bin/imsqmidaemon
 bin/pm-proxy
 bin/sensors.qcom
 bin/tftp_server
-bin/thermal-monitor
 etc/firmware/BCM4349B1_002.002.014.0051.0061.hcd
 etc/firmware/BCM4359C0_003.001.006.0026.0046.hcd
 etc/firmware/a225_pfp.fw
