@@ -163,6 +163,9 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
 
+    # set aggressive read ahead during boot up.
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+
 on boot
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -671,3 +674,8 @@ on class_start:late_start
 service pnpmgr /system/bin/pnpmgr -c /system/etc/pnp.cfg
     class core
     user root
+
+on property:sys.boot_completed=1
+    write /dev/kmsg "Boot completed "
+    # Reset the read_ahead_kb to 256
+    write /sys/block/dm-0/queue/read_ahead_kb 256
