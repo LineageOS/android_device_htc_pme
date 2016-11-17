@@ -1,8 +1,7 @@
 # Audio
 /dev/htc-acoustic                           u:object_r:audio_device:s0
 /dev/rt5501                                 u:object_r:audio_device:s0
-/dev/tfa9887                                u:object_r:audio_device:s0
-/dev/tfa9887l                               u:object_r:audio_device:s0
+/dev/tfa9888                                u:object_r:audio_device:s0
 
 # Clock
 /dev/socket/clockd(/.*)?                    u:object_r:clockd_socket:s0
@@ -12,8 +11,9 @@
 /sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:vibeamp_sysfs:s0
 
 # Fingerprint
+/dev/htc_smi                                u:object_r:fpc1155_device:s0
 /data/fpc(/.*)?                             u:object_r:fingerprintd_data_file:s0
-/sys/devices/soc.0/fp_fpc1155.104(/.*)?     u:object_r:sysfs_fingerprint:s0
+/sys/devices/soc/soc:fp_fpc1155(/.*)?       u:object_r:sysfs_fingerprint:s0
 
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0

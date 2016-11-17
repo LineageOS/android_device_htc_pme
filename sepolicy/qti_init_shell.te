@@ -1,0 +1,4 @@
+allow qti_init_shell carrier_file:dir search;
+allow qti_init_shell carrier_file:file r_file_perms;
+allow qti_init_shell rootfs:dir rw_dir_perms;
+allow qti_init_shell rootfs:lnk_file create_file_perms;

@@ -1,0 +1,1 @@
+allow rild radio_data_file:dir rw_dir_perms;

@@ -1,0 +1,4 @@
+allow system_server persist_file:dir rw_dir_perms;
+allow system_server dex2oat_exec:file { execute execute_no_trans read open };
+allow system_server dalvikcache_data_file:file { unlink };
+allow system_server cache_file:file { execute };

@@ -1,0 +1,2 @@
+allow netmgrd carrier_file:dir { search };
+allow netmgrd carrier_file:file r_file_perms;
