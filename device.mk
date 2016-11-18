@@ -114,10 +114,6 @@ PRODUCT_PACKAGES += \
     memtrack.msm8996 \
     liboverlay
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    fingerprintd
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
@@ -211,12 +207,6 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.msm8996
-
-# QMI
-PRODUCT_PACKAGES += \
-    dsi_config.xml \
-    netmgr_config.xml \
-    qmi_config.xml
 
 # Qualcomm dependencies
 PRODUCT_PACKAGES += \
