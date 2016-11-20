@@ -408,6 +408,7 @@ vendor/lib64/libmm-color-convertor.so
 vendor/firmware/libpn548_fw.so
 
 # Perf
+bin/energy-awareness
 bin/iop
 bin/msm_irqbalance
 lib64/libqti-iop.so
