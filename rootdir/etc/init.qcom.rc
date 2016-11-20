@@ -494,18 +494,30 @@ service energy-awareness /system/bin/energy-awareness
     group system
     oneshot
 
-service ppd /system/vendor/bin/mm-pp-daemon
+service ppd /system/bin/mm-pp-dpps
     class late_start
-    disabled
     user system
-    socket pps stream 0660 system system
     group system graphics
+    socket pps stream 0660 system system
+    disabled
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
 on property:init.svc.surfaceflinger=running
     start ppd
+
+on property:init.svc.surfaceflinger=restarting
+    stop ppd
+
+on property:init.svc.zygote=stopped
+    stop ppd
+
+on property:init.svc.zygote=running
+    start ppd
+
+on property:init.svc.zygote=restarting
+    stop ppd
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class main

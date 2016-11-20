@@ -433,7 +433,7 @@ vendor/lib64/libperipheral_client.so
 vendor/lib/libperipheral_client.so
 
 # Postprocessing
-vendor/bin/mm-pp-daemon
+bin/mm-pp-dpps
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libmm-als.so
 vendor/lib64/libmm-dspp-utils.so
