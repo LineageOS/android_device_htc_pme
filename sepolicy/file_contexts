@@ -16,7 +16,8 @@
 /sys/devices/soc.0/fp_fpc1155.104(/.*)?     u:object_r:sysfs_fingerprint:s0
 
 # Radio
-/dev/block/bootdevice/by-name/rfg_[0-9]+     u:object_r:modem_efs_partition_device:s0
+/dev/radio(/.*)?                            u:object_r:radio_data_file:s0
+/dev/block/bootdevice/by-name/rfg_[0-9]+    u:object_r:modem_efs_partition_device:s0
 
 # ZRAM
 /dev/block/zram[0-9]+                       u:object_r:swap_block_device:s0
