@@ -39,4 +39,10 @@
     <!-- Doze: pulse parameter - delay to wait for the screen to wake up after an intent -->
     <integer name="doze_pulse_delay_in_intent">0</integer>
 
+    <!-- Doze: should the significant motion sensor be used as a pulse signal? -->
+    <bool name="doze_pulse_on_significant_motion">false</bool>
+
+    <!-- Doze: should notifications be used as a pulse signal? -->
+    <bool name="doze_pulse_on_notifications">true</bool>
+
 </resources>

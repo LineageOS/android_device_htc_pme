@@ -321,8 +321,34 @@
          and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOff">true</bool>
 
-    <!-- Specifies whether to decouple the interactive state of the device from the display on/off state. -->
+    <!-- Power Management: Specifies whether to decouple the interactive state of the
+         device from the display on/off state.
+         When false, setInteractive(..., true) will be called before the display is turned on
+         and setInteractive(..., false) will be called after the display is turned off.
+         This mode provides best compatibility for devices that expect the interactive
+         state to be tied to the display state.
+         When true, setInteractive(...) will be called independently of whether the display
+         is being turned on or off.  This mode enables the power manager to reduce
+         clocks and disable the touch controller while the display is on.
+         This resource should be set to "true" when a doze component has been specified
+         to maximize power savings but not all devices support it.
+         Refer to power.h for details. -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+
+    <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
+         device from the display on/off state.
+         When false, autosuspend_disable() will be called before the display is turned on
+         and autosuspend_enable() will be called after the display is turned off.
+         This mode provides best compatibility for devices using legacy power management
+         features such as early suspend / late resume.
+         When true, autosuspend_display() and autosuspend_enable() will be called
+         independently of whether the display is being turned on or off.  This mode
+         enables the power manager to suspend the application processor while the
+         display is on.
+         This resource should be set to "true" when a doze component has been specified
+         to maximize power savings but not all devices support it.
+         Refer to autosuspend.h for details. -->
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">false</bool>
 
     <!-- Set this to true to enable the platform's auto-power-save modes like doze and
          app standby.  These are not enabled by default because they require a standard
@@ -338,4 +364,20 @@
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
+
+    <!-- Boolean indicating if current platform supports bluetooth SCO for off call
+         use cases -->
+    <bool name="config_bluetooth_sco_off_call">true</bool>
+
+    <!-- Boolean indicating if current platform supports bluetooth wide band
+	 speech -->
+    <bool name="config_bluetooth_wide_band_speech">true</bool>
+
+    <!-- Boolean indicating if current platform need do one-time bluetooth address
+	 re-validation -->
+    <bool name="config_bluetooth_address_validation">false</bool>
+
+    <!-- Enable/disable default bluetooth profiles:
+	 HSP_AG, ObexObjectPush, Audio, NAP -->
+    <bool name="config_bluetooth_default_profiles">true</bool>
 </resources>
