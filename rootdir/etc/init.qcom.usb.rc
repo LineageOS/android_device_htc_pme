@@ -13,6 +13,8 @@
 # limitations under the License.
 
 on init
+    write /sys/class/android_usb/android0/f_rndis/manufacturer HTC
+    write /sys/class/android_usb/android0/f_rndis/vendorID 0BB4
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
 on post-fs
@@ -23,9 +25,30 @@ on post-fs
 
 on boot
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
 
-on charger
-    setprop sys.usb.config mass_storage
+# this is for M charge-only
+on property:sys.usb.config=charged
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0f0b
+    write /sys/class/android_usb/android0/functions charging
+    write /sys/class/android_usb/android0/enable 1
+    write /sys/devices/platform/android_usb/usb_function_switch 1048576
+    setprop sys.usb.state ${sys.usb.config}
+
+# this is for M charge-only but USB debugging is on, we switch to adb
+on property:sys.usb.config=charged,adb
+    stop adbd
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0bb4
+    write /sys/class/android_usb/android0/idProduct 0c81
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    write /sys/devices/platform/android_usb/usb_function_switch 2
+    setprop sys.usb.state ${sys.usb.config}
 
 # MTP
 on property:sys.usb.config=mtp
