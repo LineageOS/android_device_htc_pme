@@ -106,6 +106,12 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
+# Connectivity Engine support (CNE)
+PRODUCT_PACKAGES += \
+    cneapiclient \
+    com.quicinc.cne \
+    services-ext
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8996 \
@@ -217,7 +223,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
     libhtcril_db \
     libprotobuf-cpp-full \
     librmnetctl
