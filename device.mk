@@ -103,7 +103,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libcameraface \
-    libxml2 \
     Snap
 
 # Connectivity Engine support (CNE)
@@ -118,7 +117,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
-    liboverlay
+    liboverlay \
+    libtinyxml
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -200,12 +200,12 @@ PRODUCT_COPY_FILES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
+    libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
-    libOmxSwVencHevc \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
@@ -214,9 +214,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8996
 
-# Qualcomm dependencies
+# QMI
 PRODUCT_PACKAGES += \
-    libtinyxml
+    libjson
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -225,7 +225,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libhtcril_db \
     libprotobuf-cpp-full \
-    librmnetctl
+    librmnetctl \
+    libxml2
 
 # Wifi
 PRODUCT_PACKAGES += \
