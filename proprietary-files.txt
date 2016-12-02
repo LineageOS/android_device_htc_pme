@@ -47,7 +47,6 @@ vendor/lib/libois_lc898123.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libqomx_jpegenc.so
-vendor/lib/libsensor1.so
 
 # Camera actuators
 vendor/lib/libactuator_ad5816g.so

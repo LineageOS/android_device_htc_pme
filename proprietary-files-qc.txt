@@ -33,7 +33,7 @@ vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 
-# CNE
+# CNE - op3
 bin/cnd
 etc/cne/SwimConfig.xml
 etc/cne/andsfCne.xml
@@ -66,7 +66,7 @@ vendor/lib64/libvendorconn.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 
-# DPM
+# DPM - op3
 bin/dpmd
 etc/dpm/dpm.conf
 etc/dpm/nsrm/NsrmConfiguration.xml
@@ -108,7 +108,7 @@ vendor/lib64/libssd.so
 vendor/lib/hw/gatekeeper.msm8996.so
 vendor/lib64/hw/gatekeeper.msm8996.so
 
-# GPS
+# GPS - op3
 bin/loc_launcher
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
@@ -185,8 +185,8 @@ vendor/lib64/libperipheral_client.so
 
 # Postprocessing
 vendor/bin/mm-pp-dpps
-vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libdisp-aba.so
+vendor/lib/libmm-hdcpmgr.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libmm-hdcpmgr.so
 
@@ -294,7 +294,7 @@ vendor/lib/sensor_calibrate.so
 vendor/lib64/libsensor1.so
 vendor/lib64/sensor_calibrate.so
 
-# Thermal
+# Thermal - g5
 etc/thermal-engine.conf
 vendor/bin/thermal-engine
 -vendor/lib/libthermalclient.so
@@ -309,7 +309,7 @@ bin/time_daemon
 -vendor/lib64/libtime_genoff.so
 -vendor/lib64/libTimeService.so
 
-# Widevine
+# Widevine - op3
 vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/libwvdrm_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
