@@ -45,4 +45,8 @@ typedef struct SocketListenParam {
     RIL_SOCKET_TYPE type;
 } SocketListenParam;
 
+void
+RIL_onRequestAck(RIL_Token t) {
+}
+
 #endif
