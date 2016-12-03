@@ -58,30 +58,32 @@ void gsm_properties(char const default_network[])
     property_set("ro.telephony.ipv6_capability", "1");
 }
 
+#define HAS_SUBSTRING(std_str, find_str) \
+        (std_str.find(find_str) != std::string::npos)
+
 void vendor_load_properties()
 {
-    char platform[PROP_VALUE_MAX];
-    char bootmid[PROP_VALUE_MAX];
-    char bootcid[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
-    char carrier[PROP_VALUE_MAX];
-    int rc;
+    std::string platform;
+    std::string bootmid;
+    std::string bootcid;
+    std::string device;
+    std::string carrier;
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || strncmp(platform, ANDROID_TARGET, PROP_VALUE_MAX))
+    platform = property_get("ro.board.platform");
+    if (platform != ANDROID_TARGET)
         return;
 
-    property_get("ro.boot.mid", bootmid);
-    property_get("ro.boot.cid", bootcid);
+    bootmid = property_get("ro.boot.mid");
+    bootcid = property_get("ro.boot.cid");
 
-    if (strstr(bootmid, "2PS620000")) {
+    if (HAS_SUBSTRING(bootmid, "2PS620000")) {
         /* Common props for HTC 10 (International) */
         gsm_properties("9");
         property_set("ro.build.fingerprint", "htc/pmeuhl_00401/htc_pmeuhl:6.0.1/MMB29M/738269.1:user/release-keys");
         property_set("ro.build.description", "1.30.401.1 8.0_g CL738269 release-keys");
         property_set("ro.product.device", "htc_pmeuhl");
         property_set("ro.build.product", "htc_pmeuhl");
-        if (strstr(bootcid, "HTC__001")) {
+        if (HAS_SUBSTRING(bootcid, "HTC__001")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.phone.min_match", "8");
@@ -102,7 +104,7 @@ void vendor_load_properties()
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.gsm.to.lte.blind.redir", "0");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__002")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__002")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.phone.min_match", "8");
@@ -123,7 +125,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.to.lte.blind.redir", "1");
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__016")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__016")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.phone.min_match", "8");
@@ -144,7 +146,7 @@ void vendor_load_properties()
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.disable.cpc", "0");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__034")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__034")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -163,7 +165,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.to.lte.blind.redir", "1");
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__A07")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__A07")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.phone.min_match", "8");
@@ -183,7 +185,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.to.lte.blind.redir", "1");
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__J15")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__J15")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.phone.min_match", "7");
@@ -202,7 +204,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.to.lte.blind.redir", "1");
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__M27")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__M27")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -220,7 +222,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.to.lte.blind.redir", "1");
             property_set("ro.ril.enable.isr", "1");
             property_set("ro.ril.hsdpa.dbdc", "1");
-        } else if (strstr(bootcid, "HTC__039")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__039")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.emc.mode", "1");
@@ -241,7 +243,7 @@ void vendor_load_properties()
             property_set("ro.ril.ltefgi", "2144337598");
             property_set("ro.ril.lte3gpp", "130");
             property_set("ro.ril.pdpnumber.policy.roaming", "3");
-        } else if (strstr(bootcid, "OPTUS001")) {
+        } else if (HAS_SUBSTRING(bootcid, "OPTUS001")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -258,7 +260,7 @@ void vendor_load_properties()
             property_set("ro.ril.fd.r8_tout.scr_off", "0");
             property_set("ro.ril.fd.r8_tout.scr_on", "0");
             property_set("ro.ril.disable.sync_pf", "1");
-        } else if (strstr(bootcid, "TELNZ001")) {
+        } else if (HAS_SUBSTRING(bootcid, "TELNZ001")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -272,7 +274,7 @@ void vendor_load_properties()
             property_set("ro.ril.enable.r8fd", "0");
             property_set("ro.ril.fd.r8_tout.scr_off", "0");
             property_set("ro.ril.fd.r8_tout.scr_on", "0");
-        } else if (strstr(bootcid, "VODAP021")) {
+        } else if (HAS_SUBSTRING(bootcid, "VODAP021")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -291,7 +293,7 @@ void vendor_load_properties()
             property_set("ro.ril.gsm.amrwb", "1");
             property_set("persist.radio.spn.nw_scan", "1");
             property_set("ro.ril.pdpnumber.policy.roaming", "3");
-        } else if (strstr(bootcid, "EVE__001")) {
+        } else if (HAS_SUBSTRING(bootcid, "EVE__001")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -313,7 +315,7 @@ void vendor_load_properties()
             property_set("ro.ril.disable.sync_pf", "0");
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
-        } else if (strstr(bootcid, "O2___001")) {
+        } else if (HAS_SUBSTRING(bootcid, "O2___001")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.enable.a53", "1");
@@ -335,7 +337,7 @@ void vendor_load_properties()
             property_set("ro.telephony.bl", "27202");
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
-        } else if (strstr(bootcid, "O2___102")) {
+        } else if (HAS_SUBSTRING(bootcid, "O2___102")) {
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10");
             property_set("ro.ril.air.enabled", "1");
@@ -356,7 +358,7 @@ void vendor_load_properties()
             property_set("ro.ril.dtmf_interval", "0");
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
-        } else if (strstr(bootcid, "HTC__621")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__621")) {
             /* HTC 10H (Tawian) */
             gsm_properties("9");
             property_set("ro.product.model", "HTC 10H");
@@ -375,11 +377,11 @@ void vendor_load_properties()
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
         }
-    } else if (strstr(bootmid, "2PS650000")) {
+    } else if (HAS_SUBSTRING(bootmid, "2PS650000")) {
         /* Common props for HTC 10 (USA) */
         property_set("ro.ril.enable.a53", "1");
         property_set("ro.ril.oem.ecclist", "911");
-        if (strstr(bootcid, "VZW__001")) {
+        if (HAS_SUBSTRING(bootcid, "VZW__001")) {
             /* HTC 10 (Verizon) */
             cdma_properties("10");
             property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
@@ -409,7 +411,7 @@ void vendor_load_properties()
             property_set("ro.phone.save_timer", "10000");
             property_set("ro.ril.fast.dormancy.cdma.rule", "0");
             property_set("persist.radio.sib16_support", "1");
-        } else if (strstr(bootcid, "T-MOB010")) {
+        } else if (HAS_SUBSTRING(bootcid, "T-MOB010")) {
             /* HTC 10 (T-Mobile) */
             gsm_properties("9");
             property_set("ro.build.fingerprint", "htc/pmewl_00531/htc_pmewl:6.0.1/MMB29M/737608.1:user/release-keys");
@@ -440,7 +442,7 @@ void vendor_load_properties()
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
             property_set("wifi.hs20.support", "true");
-        } else if (strstr(bootcid, "HTC__332")) {
+        } else if (HAS_SUBSTRING(bootcid, "HTC__332")) {
             /* HTC 10 (Telus Mexico) */
             gsm_properties("9");
             property_set("ro.phone.min_match", "10");
@@ -460,7 +462,7 @@ void vendor_load_properties()
             property_set("ro.gsm.2nd_data_retry_config", "max_retries=infinite,45000");
             property_set("ro.ril.enable.r8fd", "1");
             property_set("ro.ril.enable.pre_r8fd", "1");
-        } else if (strstr(bootcid, "BS_US001") || strstr(bootcid, "BS_US002") || strstr(bootcid, "11111111")) {
+        } else if (HAS_SUBSTRING(bootcid, "BS_US001") || HAS_SUBSTRING(bootcid, "BS_US002") || HAS_SUBSTRING(bootcid, "11111111")) {
             /* HTC 10 (North America Unlocked) */
             /* Use the generic-ish default props used on Canadian carriers for now */
             gsm_properties("9");
@@ -486,8 +488,8 @@ void vendor_load_properties()
             property_set("ro.ril.enable.r8fd", "0");
             property_set("ro.ril.enable.pre_r8fd", "1");
         }
-    } else if (strstr(bootmid, "2PS640000")) {
-        if (strstr(bootcid, "SPCS_001")) {
+    } else if (HAS_SUBSTRING(bootmid, "2PS640000")) {
+        if (HAS_SUBSTRING(bootcid, "SPCS_001")) {
             /* HTC 10 (Sprint) */
             cdma_properties("10");
             property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
@@ -508,6 +510,6 @@ void vendor_load_properties()
         }
     }
 
-    property_get("ro.product.device", device);
-    INFO("Found bootcid %s, bootmid %s setting build properties for %s device\n", bootcid, bootmid, device);
+    device = property_get("ro.product.device");
+    INFO("Found bootcid %s, bootmid %s setting build properties for %s device\n", bootcid.c_str(), bootmid.c_str(), device.c_str());
 }
