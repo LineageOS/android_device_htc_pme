@@ -63,7 +63,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := gps.msm8996
+LOCAL_MODULE := gps.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_OWNER := qcom
 
 LOCAL_MODULE_TAGS := optional
@@ -79,9 +79,6 @@ LOCAL_SHARED_LIBRARIES := \
     libgps.utils \
     libdl \
     libloc_pla
-
-ifneq ($(filter $(TARGET_DEVICE), apq8084 msm8960), false)
-endif
 
 LOCAL_SRC_FILES += \
     loc.cpp \
