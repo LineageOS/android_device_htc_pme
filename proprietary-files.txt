@@ -8,7 +8,10 @@ etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
 
 # Audio amplifier
-etc/Tfa98xx.cnt
+etc/firmware/tfa98xx.cnt
+etc/firmware/tfa98xx2.cnt
+etc/firmware/tfa98xx2_n1b.cnt
+etc/firmware/tfa98xx_n1b.cnt
 
 # Bluetooth
 etc/firmware/nvm_tlv.bin
