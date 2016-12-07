@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Version: 8996 20160323 v27 -->
+<!-- Version: 8996 20160415 v28 -->
 <mixer>
     <!-- These are the initial mixer settings -->
     <ctl name="Voice Rx Device Mute" id="0" value="0" />
@@ -2145,6 +2145,16 @@
     <!-- Headset-SPK-ring HS: D: 0dB A: -4.5dB SPK D:dB -->
     <path name="speaker-headset">
         <path name="speaker-generic" />
+        <path name="headphones-generic" />
+        <ctl name="RX0 Digital Volume" value="84" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX1 Mix Digital Volume" value="66" />
+        <ctl name="RX2 Mix Digital Volume" value="66" />
+        <ctl name="HPHL Volume" value="17" />
+        <ctl name="HPHR Volume" value="17" />
+    </path>
+
+    <path name="voice-speaker-and-headphones">
         <path name="headphones-generic" />
         <ctl name="RX0 Digital Volume" value="84" />
         <ctl name="RX1 Digital Volume" value="84" />
