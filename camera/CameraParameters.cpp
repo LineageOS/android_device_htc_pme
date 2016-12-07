@@ -180,63 +180,6 @@ const char CameraParameters::LIGHTFX_HDR[] = "high-dynamic-range";
 const char CameraParameters::SCENE_MODE_TEXT[] = "text";
 const char CameraParameters::KEY_SMILEINFO_BYFACE_SUPPORTED[] = "smileinfo-byface-supported";
 
-static const char *bad_scene_modes[] = { "hdr", "autohdr", "autohdr_burst" };
-static const size_t n_bad_scene_modes = sizeof(bad_scene_modes) / sizeof(bad_scene_modes[0]);
-
-static String8 remove_values(const String8 &values, const char **remove, size_t n_remove)
-{
-    String8 cleaned("");
-
-    for (const char *value = values.string(); *value;) {
-        if (*value == ',') {
-            value++;
-            continue;
-        }
-
-        const char *sep = strchr(value, ',');
-        if (sep == NULL) {
-            sep = value + strlen(value);
-        }
-
-        size_t i;
-        for (i = 0; i < n_remove; i++) {
-            size_t len = (size_t) (sep - value);
-            if (strlen(remove[i]) == len && strncmp(remove[i], value, len) == 0) break;
-        }
-
-        if (i >= n_remove) {
-            cleaned += String8(value, sep - value);
-            cleaned += ",";
-        }
-
-        value = sep;
-        if (*value) value++;
-    }
-
-    return cleaned;
-}
-
-static String8 get_forced_value(String8 key, String8 value)
-{
-    if (key == "face-detection-values") return String8("off");
-    if (key == "face-detection") return String8("off");
-    if (key == "hdr-supported") return String8("false");
-    if (key == "scene-mode-values") return remove_values(value, bad_scene_modes, n_bad_scene_modes);
-    return value;
-}
-
-static void add(DefaultKeyedVector<String8,String8> &map, String8 key, String8 value)
-{
-    value = get_forced_value(key, value);
-    map.add(key, value);
-}
-
-static void replaceValueFor(DefaultKeyedVector<String8,String8> &map, String8 key, String8 value)
-{
-    value = get_forced_value(key, value);
-    map.replaceValueFor(key, value);
-}
-
 CameraParameters::CameraParameters()
     : CameraParameters_EXT(this), mMap()
 {
@@ -288,12 +231,12 @@ void CameraParameters::unflatten(const String8 &params)
         if (b == 0) {
             // If there's no semicolon, this is the last item.
             String8 v(a);
-            add(mMap, k, v);
+            mMap.add(k, v);
             break;
         }
 
         String8 v(a, (size_t)(b-a));
-        add(mMap, k, v);
+        mMap.add(k, v);
         a = b+1;
     }
 }
@@ -319,11 +262,11 @@ void CameraParameters::set(const char *key, const char *value)
     // The android SDK only wants one frame, so disable this unless the app
     // explicitly asks for it
     if (!get("hdr-need-1x")) {
-        replaceValueFor(mMap, String8("hdr-need-1x"), String8("false"));
+        mMap.replaceValueFor(String8("hdr-need-1x"), String8("false"));
     }
 #endif
 
-    replaceValueFor(mMap, String8(key), String8(value));
+    mMap.replaceValueFor(String8(key), String8(value));
 }
 
 void CameraParameters::set(const char *key, int value)

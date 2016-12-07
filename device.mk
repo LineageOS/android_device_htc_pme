@@ -101,7 +101,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libcameraface \
+    libxml2 \
     Snap
 
 # Connectivity Engine support (CNE)
