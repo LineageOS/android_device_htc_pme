@@ -89,6 +89,7 @@ public:
     static const char KEY_FORCE_USE_AUDIO_ENABLED[];
     static const char KEY_SLOW_MOTION_VERSION[];
     static const char KEY_SAVE_MIRROR[];
+    static const char KEY_SMILEINFO_BYFACE_SUPPORTED[];
     static const char DENOISE_ON[];
     static const char DENOISE_OFF[];
 };

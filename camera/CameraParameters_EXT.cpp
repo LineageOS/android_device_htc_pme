@@ -56,6 +56,7 @@ const char CameraParameters_EXT::KEY_VIDEO_MODE[] = "video-mode";
 const char CameraParameters_EXT::KEY_FORCE_USE_AUDIO_ENABLED[] = "force-use-audio-enabled";
 const char CameraParameters_EXT::KEY_SLOW_MOTION_VERSION[] = "slow-motion-version";
 const char CameraParameters_EXT::KEY_SAVE_MIRROR[] = "save-mirror";
+const char CameraParameters_EXT::KEY_SMILEINFO_BYFACE_SUPPORTED[] = "smileinfo-byface-supported";
 const char CameraParameters_EXT::DENOISE_ON[] = "denoise-on";
 const char CameraParameters_EXT::DENOISE_OFF[] = "denoise-off";
 
