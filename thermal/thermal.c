@@ -273,7 +273,7 @@ thermal_module_t HAL_MODULE_INFO_SYM = {
         .module_api_version = THERMAL_HARDWARE_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = THERMAL_HARDWARE_MODULE_ID,
-        .name = "G5 Thermal HAL",
+        .name = "PME Thermal HAL",
         .author = "The Android Open Source Project",
         .methods = &thermal_module_methods,
     },
