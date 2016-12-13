@@ -1,19 +1,25 @@
 # Audio
 audio_hal.period_size=240
-audio.offload.buffer.size.kb=1024
-audio.offload.multiple.enabled=false
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
 af.fast_track_multiplier=2
-ro.qc.sdk.audio.ssr=false
-use.voice.path.for.pcm.voip=true
 audio.ds1.metainfo.key=273
 dmid=-1286820014
 ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
-#av.offload.enable=true
+tunnel.audio.encode=false
+audio.offload.buffer.size.kb=1024
+audio.offload.video=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+audio.deep_buffer.media=true
+use.voice.path.for.pcm.voip=true
+audio.offload.multiaac.enable=true
+audio.offload.passthrough=true
+audio.offload.multiple.enabled=false
+ro.qc.sdk.audio.ssr=false
+audio.safx.pbe.enabled=true
+audio.parser.ip.buffer.size=262144
 
 # Bluetooth
 ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
@@ -51,6 +57,9 @@ ro.gps.agps_provider=1
 
 # Low power for encoder
 vidc.debug.perf.mode=2
+
+# Media
+mm.enable.smoothstreaming=true
 
 # Perf
 ro.am.reschedule_service=true
