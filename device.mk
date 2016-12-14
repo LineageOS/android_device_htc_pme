@@ -228,10 +228,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjson
 
-# RIL
-PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
-
 PRODUCT_PACKAGES += \
     libhtcril_db \
     libprotobuf-cpp-full \
