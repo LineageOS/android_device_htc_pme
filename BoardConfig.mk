@@ -108,7 +108,6 @@ BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw
 
 # CNE and DPM
-TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
 
 # Display

@@ -421,12 +421,12 @@ service charger /charger
 service cnd /system/bin/cnd
     class main
     socket cnd stream 660 root inet
-    group root wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service dpmd /system/bin/dpmd
     class late_start
     socket dpmd stream 660 root system
+    group system readproc
     writepid /dev/cpuset/system-background/tasks
 
 service fingerprintd /system/bin/fingerprintd
