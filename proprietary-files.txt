@@ -13,6 +13,9 @@ etc/firmware/tfa98xx2.cnt
 etc/firmware/tfa98xx2_n1b.cnt
 etc/firmware/tfa98xx_n1b.cnt
 
+# Audio effects
+lib/soundfx/libvolumelistener.so
+
 # Bluetooth
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
