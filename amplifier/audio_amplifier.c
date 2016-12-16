@@ -132,11 +132,16 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
     case AUDIO_MODE_IN_COMMUNICATION:
         return PROFILE_VOIP;
     case AUDIO_MODE_NORMAL:
-    case AUDIO_MODE_IN_CALL:
         if (device_class == IS_EARPIECE) {
             return PROFILE_HANDSET;
         } else if (device_class == IS_SPEAKER) {
             return PROFILE_MUSIC;
+        }
+    case AUDIO_MODE_IN_CALL:
+        if (device_class == IS_EARPIECE) {
+            return PROFILE_HANDSET;
+        } else if (device_class == IS_SPEAKER) {
+            return PROFILE_HANDSFREE_WB;
         }
     default:
         switch(device_class) {
