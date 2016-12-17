@@ -161,7 +161,9 @@ static int amp_enable_output_devices(struct amplifier_device *device, uint32_t s
 {
     amp_device_t *dev = (amp_device_t *) device;
     int profile = select_profile(dev->mode, snd_device);
-    tfa_apply_profile(dev->tfa, profile);
+    if (profile >= 0) {
+        tfa_apply_profile(dev->tfa, profile);
+    }
     return 0;
 }
 
