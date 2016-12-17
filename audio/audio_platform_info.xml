@@ -36,6 +36,8 @@
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker" />
+        <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" />
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="headphones" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-headset" />
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" backend="speaker-protected" />
     </backend_names>
@@ -45,6 +47,7 @@
     <device_names>
          <device name="SND_DEVICE_OUT_VOICE_HANDSET" alias="earpiece-voice" />
          <device name="SND_DEVICE_OUT_VOICE_SPEAKER" alias="speaker-voice" />
+         <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" alias="headphones-voice" />
          <device name="SND_DEVICE_IN_VOICE_DMIC" alias="dmic-endfire" />
          <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="speaker-dmic-endfire" />
     </device_names>
