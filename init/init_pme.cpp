@@ -46,6 +46,17 @@ void cdma_properties(char const default_network[])
     property_set("ro.ril.force_eri_from_xml", "true");
 }
 
+void cdma_noeri_properties(char const default_network[])
+{
+    property_set("ro.telephony.default_network", default_network);
+    property_set("ro.ril.hsxpa", "4");
+    property_set("ro.ril.enable.a53", "1");
+    property_set("ro.ril.enable.gea3", "1");
+    property_set("ro.ril.enable.r8fd", "1");
+    property_set("ro.telephony.ipv6_capability", "1");
+    property_set("ro.ril.force_eri_from_xml", "false");
+}
+
 void gsm_properties(char const default_network[])
 {
     property_set("ro.telephony.default_network", default_network);
@@ -382,11 +393,11 @@ void vendor_load_properties()
         if (strstr(bootcid, "VZW__001")) {
             /* HTC 10 (Verizon) */
             cdma_properties("10");
-            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
-            property_set("ro.build.description", "1.24.651.3 8.0_g CL744051 release-keys");
+            property_set("ro.build.fingerprint", "htc/HTCOneM10vzw/htc_pmewl:6.0.1/MMB29M/774095.6:user/release-keys");
+            property_set("ro.build.description", "1.82.605.6 8.0_g CL774095 release-keys");
             property_set("ro.product.model", "HTC6545LVW");
-            property_set("ro.product.device", "htc_pmewhl");
-            property_set("ro.build.product", "htc_pmewhl");
+            property_set("ro.product.device", "htc_pmewl");
+            property_set("ro.build.product", "htc_pmewl");
             property_set("telephony.lteOnCdmaDevice", "1");
             property_set("ro.ril.hsdpa.category", "24");
             property_set("ro.ril.hsupa.category", "6");
@@ -489,12 +500,18 @@ void vendor_load_properties()
     } else if (strstr(bootmid, "2PS640000")) {
         if (strstr(bootcid, "SPCS_001")) {
             /* HTC 10 (Sprint) */
-            cdma_properties("10");
-            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
-            property_set("ro.build.description", "1.24.651.3 8.0_g CL744051 release-keys");
+            cdma_noeri_properties("8");
+            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/761758.10:user/release-keys");
+            property_set("ro.build.description", "1.80.651.10 8.0_g CL761758 release-keys");
+            property_set("ro.cdma.home.operator.alpha", "Sprint");
+            property_set("ro.cdma.home.operator.numeric", "310120");
+            property_set("ro.home.operator.carrierid", "Chameleon");
+            property_set("ro.gps.agps_provider", "1");
+            property_set("telephony.lteOnCdmaDevice", "1");
+            property_set("telephony.lteCdmaDevice", "1");
             property_set("ro.product.device", "htc_pmewhl");
             property_set("ro.build.product", "htc_pmewhl");
-            property_set("ro.product.model", "HTC 10");
+            property_set("ro.product.model", "2PS64");
             property_set("ro.phone.min_match", "8");
             property_set("ro.ril.hsdpa.category", "14");
             property_set("ro.ril.hsupa.category", "6");
@@ -504,7 +521,13 @@ void vendor_load_properties()
             property_set("ro.ril.disable.cpc", "1");
             property_set("ro.ril.set.mtusize", "1422");
             property_set("ro.ril.enable.a53", "1");
-            property_set("ro.ril.oem.ecclist", "911");
+            property_set("ro.ril.oem.ecclist", "911,112,*911,#911");
+            property_set("ro.ril.oem.show.act", "1");
+            property_set("ril.subscription.types", "NV,RUIM");
+            property_set("persist.radio.no_wait_for_card", "1");
+            property_set("ro.telephony.default_cdma_sub", "1");
+            property_set("ril.data.phone.type", "2");
+            property_set("DEVICE_PROVISIONED", "1");
         }
     }
 
