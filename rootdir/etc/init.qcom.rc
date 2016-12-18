@@ -55,6 +55,20 @@ on init
     # From init.target.rc
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
+    # HTC SSD Battery
+    chown system system /sys/class/power_supply/battery/full_level_dis_batt_chg
+    chmod 0220 /sys/class/power_supply/battery/full_level_dis_batt_chg
+    chown radio radio /sys/class/power_supply/battery/phone_call
+    chmod 0660 /sys/class/power_supply/battery/phone_call
+    chown media media /sys/class/power_supply/battery/play_music
+    chmod 0220 /sys/class/power_supply/battery/play_music
+    chown radio radio /sys/class/power_supply/battery/network_search
+    chmod 0220 /sys/class/power_supply/battery/network_search
+    chown system system /sys/class/power_supply/battery/navigation
+    chmod 0220 /sys/class/power_supply/battery/navigation
+    chown system system /sys/class/power_supply/battery/disable_limit_chg
+    chmod 0220 /sys/class/power_supply/battery/disable_limit_chg
+
 on fs
     mount_all fstab.qcom
 
@@ -222,6 +236,10 @@ on boot
     chown root system /proc/driver/hdf
     chmod 0664 /proc/driver/hdf
 
+    # HTC USB
+    chown system system /sys/devices/platform/android_usb/usb_disable
+    chown system radio /sys/devices/platform/android_usb/usb_modem_enable
+
     # SSC/SLPI sensors
     chmod 0775 /persist/sensors
     chmod 0664 /persist/sensors/sensors_settings
@@ -229,12 +247,15 @@ on boot
 
     # Set display permissions
     chown system graphics /sys/class/leds/lcd-backlight/cabc_level_ctl
+    chown system graphics /sys/class/leds/lcd-backlight/color_temp_ctl
+    chown system graphics /sys/class/leds/lcd-backlight/color_profile_ctl
     chown system system /sys/class/leds/lcd-backlight/burst_switch
     chown system system /sys/class/leds/lcd-backlight-nits/brightness
 
     # Capacitive key disabler permissions
     chown system system /sys/devices/soc/757a000.i2c/i2c-6/6-0064/disable_key
 
+    # HTC Camera - for Flashlight Restriction
     chown system system /sys/camera_led_status/led_hotspot_status
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
@@ -357,12 +378,18 @@ on boot
     chmod 444 /sys/class/optical_sensors/proximity/ps_adc
 
     # LED
-    chown system system /sys/class/leds/flashlight/brightness
     chown system system /sys/class/leds/indicator/ModeRGB
     chown system system /sys/class/leds/indicator/off_timer
 
-    # Set glove mode permissions
+    # Flashlight
+    chown system system /sys/class/leds/flashlight/brightness
+    chown vte    vte    /dev/vte_flt
+    chmod 0660 /dev/vte_flt
+
+    # Set touch permissions
     chown system system /sys/android_touch/glove_setting
+
+    # Set cap permissions
     chown system system /sys/android_cap/glove_setting
 
     # Set volume key wake attribute permissions
