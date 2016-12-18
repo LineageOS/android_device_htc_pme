@@ -246,7 +246,7 @@ amplifier_module_t HAL_MODULE_INFO_SYM = {
         .module_api_version = AMPLIFIER_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = AMPLIFIER_HARDWARE_MODULE_ID,
-        .name = "Kiwi audio amplifier HAL",
+        .name = "PME audio amplifier HAL",
         .author = "The CyanogenMod Open Source Project",
         .methods = &hal_module_methods,
     },
