@@ -382,11 +382,11 @@ void vendor_load_properties()
         if (strstr(bootcid, "VZW__001")) {
             /* HTC 10 (Verizon) */
             cdma_properties("10");
-            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
-            property_set("ro.build.description", "1.24.651.3 8.0_g CL744051 release-keys");
+            property_set("ro.build.fingerprint", "htc/HTCOneM10vzw/htc_pmewl:6.0.1/MMB29M/774095.6:user/release-keys");
+            property_set("ro.build.description", "1.82.605.6 8.0_g CL774095 release-keys");
             property_set("ro.product.model", "HTC6545LVW");
-            property_set("ro.product.device", "htc_pmewhl");
-            property_set("ro.build.product", "htc_pmewhl");
+            property_set("ro.product.device", "htc_pmewl");
+            property_set("ro.build.product", "htc_pmewl");
             property_set("telephony.lteOnCdmaDevice", "1");
             property_set("ro.ril.hsdpa.category", "24");
             property_set("ro.ril.hsupa.category", "6");
@@ -490,11 +490,11 @@ void vendor_load_properties()
         if (strstr(bootcid, "SPCS_001")) {
             /* HTC 10 (Sprint) */
             cdma_properties("10");
-            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/744051.3:user/release-keys");
-            property_set("ro.build.description", "1.24.651.3 8.0_g CL744051 release-keys");
+            property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/761758.10:user/release-keys");
+            property_set("ro.build.description", "1.80.651.10 8.0_g CL761758 release-keys");
             property_set("ro.product.device", "htc_pmewhl");
             property_set("ro.build.product", "htc_pmewhl");
-            property_set("ro.product.model", "HTC 10");
+            property_set("ro.product.model", "2PS64");
             property_set("ro.phone.min_match", "8");
             property_set("ro.ril.hsdpa.category", "14");
             property_set("ro.ril.hsupa.category", "6");
