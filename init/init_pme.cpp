@@ -46,6 +46,17 @@ void cdma_properties(char const default_network[])
     property_set("ro.ril.force_eri_from_xml", "true");
 }
 
+void cdma_noeri_properties(char const default_network[])
+{
+    property_set("ro.telephony.default_network", default_network);
+    property_set("ro.ril.hsxpa", "4");
+    property_set("ro.ril.enable.a53", "1");
+    property_set("ro.ril.enable.gea3", "1");
+    property_set("ro.ril.enable.r8fd", "1");
+    property_set("ro.telephony.ipv6_capability", "1");
+    property_set("ro.ril.force_eri_from_xml", "false");
+}
+
 void gsm_properties(char const default_network[])
 {
     property_set("ro.telephony.default_network", default_network);
@@ -489,7 +500,7 @@ void vendor_load_properties()
     } else if (strstr(bootmid, "2PS640000")) {
         if (strstr(bootcid, "SPCS_001")) {
             /* HTC 10 (Sprint) */
-            cdma_properties("10");
+            cdma_noeri_properties("10");
             property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/761758.10:user/release-keys");
             property_set("ro.build.description", "1.80.651.10 8.0_g CL761758 release-keys");
             property_set("ro.product.device", "htc_pmewhl");
