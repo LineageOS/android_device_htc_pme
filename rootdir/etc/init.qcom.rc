@@ -161,6 +161,9 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+on property:init.svc.bootanim=running
+    write /sys/class/leds/wled/brightness 4095
+
 on early-boot
     chown root audio /sys/kernel/boot_adsp/boot
     write /sys/kernel/boot_adsp/boot 1
