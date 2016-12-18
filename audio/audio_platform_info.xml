@@ -30,6 +30,7 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED_VBAT" acdb_id="15"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="42" />
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="508" />
     </acdb_ids>
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
