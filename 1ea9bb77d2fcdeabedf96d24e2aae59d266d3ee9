@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_816fe690",
+        "filename": "init/init_pme.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2016-12-18T10:44:38Z",
+      "side": 1,
+      "message": "Instead of duplicating all of this, you could delete the old cdma_properties and add here:\n\nvoid cdma_properties(char const default_network[])\n{\n    cdma_noeri_properties(default_network);\n    property_set(\"ro.ril.force_eri_from_xml\", \"true\");\n}",
+      "revId": "1ea9bb77d2fcdeabedf96d24e2aae59d266d3ee9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
