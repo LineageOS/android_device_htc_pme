@@ -500,13 +500,37 @@ void vendor_load_properties()
     } else if (strstr(bootmid, "2PS640000")) {
         if (strstr(bootcid, "SPCS_001")) {
             /* HTC 10 (Sprint) */
-            cdma_noeri_properties("10");
+            cdma_noeri_properties("8");
             property_set("ro.build.fingerprint", "htc/pmewhl_00651/htc_pmewhl:6.0.1/MMB29M/761758.10:user/release-keys");
             property_set("ro.build.description", "1.80.651.10 8.0_g CL761758 release-keys");
             property_set("ro.product.device", "htc_pmewhl");
             property_set("ro.build.product", "htc_pmewhl");
             property_set("ro.product.model", "2PS64");
+            property_set("ro.aa.cidlist", "SPCS_001");
+            property_set("ro.aa.maincid", "SPCS_001");
+            property_set("ro.aa.mainsku", "651");
+            property_set("ro.cwkey", "SPCS_001");
+            property_set("ro.onecid", "1");
             property_set("ro.phone.min_match", "8");
+            property_set("ro.cdma.home.operator.alpha", "Sprint");
+            property_set("ro.cdma.home.operator.numeric", "310120");
+            property_set("ro.home.operator.carrierid", "Chameleon");
+            property_set("ro.gsm.sim.operator.numeric", "310120");
+            property_set("gsm.sim.operator.numeric", "310120");
+            property_set("gsm.sim.operator.alpha", "Sprint");
+            property_set("gsm.operator.numeric", "000000");
+            property_set("gsm.operator.alpha", "Chameleon");
+            property_set("gsm.cdma.nv.home.country", "us");
+            property_set("ro.gps.agps_provider", "1");
+            property_set("telephony.lteOnCdmaDevice", "1");
+            property_set("telephony.lteCdmaDevice", "1");
+            property_set("ro.ril.oem.ecclist", "911,112,*911,#911");
+            property_set("ro.ril.oem.show.act", "1");
+            property_set("ril.subscription.types", "NV,RUIM");
+            property_set("persist.radio.no_wait_for_card", "1");
+            property_set("ro.telephony.default_cdma_sub", "1");
+            property_set("ril.data.phone.type", "2");
+            property_set("DEVICE_PROVISIONED", "1");
             property_set("ro.ril.hsdpa.category", "14");
             property_set("ro.ril.hsupa.category", "6");
             property_set("ro.ril.def.agps.mode", "6");
@@ -515,7 +539,6 @@ void vendor_load_properties()
             property_set("ro.ril.disable.cpc", "1");
             property_set("ro.ril.set.mtusize", "1422");
             property_set("ro.ril.enable.a53", "1");
-            property_set("ro.ril.oem.ecclist", "911");
         }
     }
 
