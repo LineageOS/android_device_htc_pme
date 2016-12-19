@@ -137,12 +137,14 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
         } else if (device_class == IS_SPEAKER) {
             return PROFILE_MUSIC;
         }
+        break;
     case AUDIO_MODE_IN_CALL:
         if (device_class == IS_EARPIECE) {
             return PROFILE_HANDSET;
         } else if (device_class == IS_SPEAKER) {
             return PROFILE_HANDSFREE_WB;
         }
+        break;
     default:
         switch(device_class) {
         case IS_EARPIECE:
@@ -151,10 +153,9 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
             return PROFILE_MUSIC;
         case IS_VOIP:
             return PROFILE_VOIP;
-        default:
-            return -1;
         }
     }
+    return -1;
 }
 
 static int amp_enable_output_devices(struct amplifier_device *device, uint32_t snd_device, bool enable UNUSED)
