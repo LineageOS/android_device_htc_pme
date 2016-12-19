@@ -29,8 +29,12 @@
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED_VBAT" acdb_id="15"/>
+        <device name="SND_DEVICE_OUT_BT_SCO" acdb_id="1520" />
+        <device name="SND_DEVICE_OUT_BT_SCO_WB" acdb_id="1520" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="42" />
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="508" />
+        <device name="SND_DEVICE_IN_BT_SCO_MIC" acdb_id="1420" />
+        <device name="SND_DEVICE_IN_BT_SCO_MIC_WB" acdb_id="1420" />
     </acdb_ids>
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
