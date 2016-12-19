@@ -61,7 +61,7 @@ static int amp_set_mode(struct amplifier_device *device, audio_mode_t mode)
 #define PROFILE_CALIBRATION     11
 
 enum {
-    IS_EARPIECE, IS_SPEAKER, IS_VOIP, IS_OTHER
+    IS_EARPIECE, IS_SPEAKER, IS_VOIP, IS_BT_SCO, IS_BT_SCO_WB, IS_OTHER
 };
 
 static int classify_snd_device(uint32_t snd_device)
@@ -77,6 +77,12 @@ static int classify_snd_device(uint32_t snd_device)
 
     case SND_DEVICE_OUT_VOICE_TX:
         return IS_VOIP;
+
+    case SND_DEVICE_OUT_BT_SCO:
+        return IS_BT_SCO;
+
+    case SND_DEVICE_OUT_BT_SCO_WB:
+        return IS_BT_SCO_WB;
 
     case SND_DEVICE_OUT_SPEAKER_EXTERNAL_1:
     case SND_DEVICE_OUT_SPEAKER_EXTERNAL_2:
@@ -94,8 +100,6 @@ static int classify_snd_device(uint32_t snd_device)
     case SND_DEVICE_OUT_VOICE_LINE:
     case SND_DEVICE_OUT_HDMI:
     case SND_DEVICE_OUT_SPEAKER_AND_HDMI:
-    case SND_DEVICE_OUT_BT_SCO:
-    case SND_DEVICE_OUT_BT_SCO_WB:
     case SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES:
     case SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES:
     case SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET:
@@ -131,28 +135,22 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
         return PROFILE_RINGTONE;
     case AUDIO_MODE_IN_COMMUNICATION:
         return PROFILE_VOIP;
-    case AUDIO_MODE_NORMAL:
-        if (device_class == IS_EARPIECE) {
-            return PROFILE_HANDSET;
-        } else if (device_class == IS_SPEAKER) {
-            return PROFILE_MUSIC;
-        }
-        break;
     case AUDIO_MODE_IN_CALL:
-        if (device_class == IS_EARPIECE) {
-            return PROFILE_HANDSET;
-        } else if (device_class == IS_SPEAKER) {
-            return PROFILE_HANDSFREE_WB;
+        switch(device_class) {
+        case IS_EARPIECE:   return PROFILE_HANDSET;
+        case IS_SPEAKER:    return PROFILE_HANDSFREE_WB;
+        case IS_BT_SCO:     return PROFILE_HANDSFREE_NB;
+        case IS_BT_SCO_WB:  return PROFILE_HANDSFREE_WB;
         }
         break;
     default:
+    case AUDIO_MODE_NORMAL:
         switch(device_class) {
-        case IS_EARPIECE:
-            return PROFILE_HANDSET;
-        case IS_SPEAKER:
-            return PROFILE_MUSIC;
-        case IS_VOIP:
-            return PROFILE_VOIP;
+        case IS_EARPIECE:   return PROFILE_HANDSET;
+        case IS_SPEAKER:    return PROFILE_MUSIC;
+        case IS_VOIP:       return PROFILE_VOIP;
+        case IS_BT_SCO:     return PROFILE_MUSIC;
+        case IS_BT_SCO_WB:  return PROFILE_MUSIC;
         }
     }
     return -1;
