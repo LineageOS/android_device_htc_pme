@@ -496,63 +496,6 @@ lib64/lib_fp_img_store.so
 lib/lib_fpc_tac_shared.so
 lib/lib_fp_img_store.so
 
-# Graphics
-vendor/lib64/egl/eglSubDriverAndroid.so
-vendor/lib64/egl/libEGL_adreno.so
-vendor/lib64/egl/libGLESv1_CM_adreno.so
-vendor/lib64/egl/libGLESv2_adreno.so
-vendor/lib64/egl/libq3dtools_adreno.so
-vendor/lib64/egl/libQTapGLES.so
-vendor/lib64/hw/vulkan.msm8996.so
-vendor/lib64/libadreno_utils.so
-vendor/lib64/libbccQTI.so
-vendor/lib64/libC2D2.so
-vendor/lib64/libc2d30-a5xx.so
-vendor/lib64/libc2d30_bltlib.so
-vendor/lib64/libCB.so
-vendor/lib64/libgsl.so
-vendor/lib64/libllvm-glnext.so
-vendor/lib64/libllvm-qcom.so
-vendor/lib64/libllvm-qgl.so
-vendor/lib64/libmm-disp-apis.so
-vendor/lib64/libmm-qdcm.so
-vendor/lib64/libmmQSM.so
-vendor/lib64/libOpenCL.so
-vendor/lib64/librs_adreno_sha1.so
-vendor/lib64/librs_adreno.so
-vendor/lib64/libRSDriver_adreno.so
-vendor/lib64/libscalar.so
-vendor/lib64/libsdm-color.so
-vendor/lib64/libsdm-diag.so
-vendor/lib64/libsdm-disp-apis.so
-vendor/lib64/libsdmextension.so
-vendor/lib64/libsd_sdk_display.so
-vendor/lib64/libuiblur.so
-vendor/lib/egl/eglSubDriverAndroid.so
-vendor/lib/egl/libEGL_adreno.so
-vendor/lib/egl/libGLESv1_CM_adreno.so
-vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/hw/vulkan.msm8996.so
-vendor/lib/libadreno_utils.so
-vendor/lib/libbccQTI.so
-vendor/lib/libC2D2.so
-vendor/lib/libc2d30-a5xx.so
-vendor/lib/libc2d30_bltlib.so
-vendor/lib/libCB.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-glnext.so
-vendor/lib/libllvm-qcom.so
-vendor/lib/libllvm-qgl.so
-vendor/lib/libmmQSM.so
-vendor/lib/libOpenCL.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
-vendor/lib/libsdm-disp-apis.so
-vendor/lib/libsd_sdk_display.so
-
 # Graphics firmware
 etc/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw
@@ -580,7 +523,6 @@ etc/firmware/a540_gpmu.fw2
 
 # Mixed firmware
 etc/firmware/BCM4349B1_002.002.014.0051.0061.hcd
-etc/firmware/BCM4359C0_003.001.006.0026.0046.hcd
 etc/firmware/BCM4359C0_003.001.006.0065.0111.hcd
 etc/firmware/alipay.b00
 etc/firmware/alipay.b01
@@ -614,10 +556,7 @@ etc/firmware/mc_v2.b04
 etc/firmware/mc_v2.b05
 etc/firmware/mc_v2.b06
 etc/firmware/mc_v2.mdt
-etc/firmware/sandisk_fw_101149.fluf
-etc/firmware/sandisk_fw_202011.fluf
 etc/firmware/synaptics.img
-etc/firmware/usb_typec.img
 etc/firmware/usb_typec_otp.img
 etc/firmware/usb_typec_otp_ad.img
 
