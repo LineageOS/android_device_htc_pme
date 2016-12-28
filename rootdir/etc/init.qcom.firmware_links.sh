@@ -35,7 +35,6 @@
 SRC=$1
 DEST=$2
 PATTERN=$3
-DONE=$4
 
 # No path is set up at this point so we have to do it here.
 PATH=/sbin:/system/sbin:/system/bin:/system/xbin
@@ -93,7 +92,5 @@ case $linksNeeded in
 		# Nothing to do. No links needed
 		;;
 esac
-
-test -n "$DONE" && ln -s $SRC $DEST/."$DONE"_done
 
 cd /
