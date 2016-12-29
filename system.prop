@@ -94,6 +94,8 @@ ro.baseband.arch=msm
 ro.telephony.default_network=9
 ro.telephony.call_ring.multiple=false
 
+ro.ril.telephony.mqanelements=5
+
 # RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
