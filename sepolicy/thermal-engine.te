@@ -1,0 +1,2 @@
+# Read and control gpu frequencies
+allow thermal-engine sysfs_kgsl:file rw_file_perms;

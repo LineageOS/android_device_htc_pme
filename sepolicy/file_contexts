@@ -10,6 +10,9 @@
 # CMHW
 /sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:vibeamp_sysfs:s0
 
+# Encryption
+/dev/block/bootdevice/by-name/extra         u:object_r:forceencrypt_block_device:s0
+
 # Fingerprint
 /dev/htc_smi                                u:object_r:fpc1155_device:s0
 /data/fpc(/.*)?                             u:object_r:fingerprintd_data_file:s0
