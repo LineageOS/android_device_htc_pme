@@ -1,12 +1,12 @@
 /* props/europe-1.80: HTC Europe: HTC__001 HTC__034 HTC__A07 HTC__J15 HTC__M27 HTC__016 HTC__002 */
 static bool is_variant_europe(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "HTC__001")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__034")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__A07")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__J15")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__M27")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__016")) return true;
-    if (HAS_SUBSTRING(bootcid, "HTC__002")) return true;
+    if (bootcid == "HTC__001") return true;
+    if (bootcid == "HTC__034") return true;
+    if (bootcid == "HTC__A07") return true;
+    if (bootcid == "HTC__J15") return true;
+    if (bootcid == "HTC__M27") return true;
+    if (bootcid == "HTC__016") return true;
+    if (bootcid == "HTC__002") return true;
     return false;
 }
 

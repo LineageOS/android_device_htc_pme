@@ -1,6 +1,6 @@
 /* props/taiwan-1.92: hTC Asia TW: HTC__621 */
 static bool is_variant_taiwan(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "HTC__621")) return true;
+    if (bootcid == "HTC__621") return true;
     return false;
 }
 

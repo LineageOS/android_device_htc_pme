@@ -1,9 +1,9 @@
 /* props/asia-1.21: hTC Asia AUS: HTC__039 OPTUS001 VODAP021 TELNZ001 */
 static bool is_variant_asia(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "HTC__039")) return true;
-    if (HAS_SUBSTRING(bootcid, "OPTUS001")) return true;
-    if (HAS_SUBSTRING(bootcid, "VODAP021")) return true;
-    if (HAS_SUBSTRING(bootcid, "TELNZ001")) return true;
+    if (bootcid == "HTC__039") return true;
+    if (bootcid == "OPTUS001") return true;
+    if (bootcid == "VODAP021") return true;
+    if (bootcid == "TELNZ001") return true;
     return false;
 }
 

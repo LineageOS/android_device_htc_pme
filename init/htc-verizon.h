@@ -1,6 +1,6 @@
 /* props/verizon: VERIZON WWE: VZW__001 */
 static bool is_variant_verizon(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "VZW__001")) return true;
+    if (bootcid == "VZW__001") return true;
     return false;
 }
 

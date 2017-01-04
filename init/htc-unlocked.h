@@ -1,7 +1,7 @@
 /* props/unlocked-2.28: NA Gen Unlock: BS_US001 BS_US002 */
 static bool is_variant_unlocked(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "BS_US001")) return true;
-    if (HAS_SUBSTRING(bootcid, "BS_US002")) return true;
+    if (bootcid == "BS_US001") return true;
+    if (bootcid == "BS_US002") return true;
     return false;
 }
 

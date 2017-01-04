@@ -1,6 +1,6 @@
 /* props/sprint-1.80: Sprint WWE: SPCS_001 */
 static bool is_variant_sprint(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "SPCS_001")) return true;
+    if (bootcid == "SPCS_001") return true;
     return false;
 }
 

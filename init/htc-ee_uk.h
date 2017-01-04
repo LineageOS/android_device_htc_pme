@@ -1,6 +1,6 @@
 /* props/ee_uk-1.21: EE UK: EVE__001 */
 static bool is_variant_ee_uk(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "EVE__001")) return true;
+    if (bootcid == "EVE__001") return true;
     return false;
 }
 

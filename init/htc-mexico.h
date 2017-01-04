@@ -1,6 +1,6 @@
 /* props/mexico-1.02: HTC LA ESN Telcel: HTC__332 */
 static bool is_variant_mexico(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "HTC__332")) return true;
+    if (bootcid == "HTC__332") return true;
     return false;
 }
 

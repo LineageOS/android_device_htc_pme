@@ -1,7 +1,7 @@
 /* props/o2_uk-1.21: O2 UK: O2___001 O2___102 */
 static bool is_variant_o2_uk(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "O2___001")) return true;
-    if (HAS_SUBSTRING(bootcid, "O2___102")) return true;
+    if (bootcid == "O2___001") return true;
+    if (bootcid == "O2___102") return true;
     return false;
 }
 

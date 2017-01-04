@@ -1,6 +1,6 @@
 /* props/tmobile_usa-1.21: TMOUS: T-MOB010 */
 static bool is_variant_tmobile_usa(std::string bootcid) {
-    if (HAS_SUBSTRING(bootcid, "T-MOB010")) return true;
+    if (bootcid == "T-MOB010") return true;
     return false;
 }
 

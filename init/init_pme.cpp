@@ -35,9 +35,6 @@
 #include "log.h"
 #include "util.h"
 
-#define HAS_SUBSTRING(std_str, find_str) \
-        (std_str.find(find_str) != std::string::npos)
-
 /* Device specific properties */
 #include "htc-asia.h"
 #include "htc-ee_uk.h"
@@ -120,11 +117,11 @@ void vendor_load_properties()
         load_properties(htc_taiwan_properties);
     } else if (is_variant_tmobile_usa(bootcid)) {
         load_properties(htc_tmobile_usa_properties);
-    } else if (is_variant_unlocked(bootcid) || HAS_SUBSTRING(bootcid, "11111111")) {
+    } else if (is_variant_unlocked(bootcid) || bootcid == "11111111") {
         load_properties(htc_unlocked_properties);
     } else if (is_variant_verizon(bootcid)) {
         load_properties(htc_verizon_properties);
-    } else if (HAS_SUBSTRING(bootmid, "2PS620000")) {
+    } else if (bootmid == "2PS620000") {
         /* If we don't know the variant, fall back to europe but make it clear we did so */
         property_set("ro.build.product", "HTC 10 (unknown international)");
         property_set("ro.product.device", "HTC 10 (unknown international)");
