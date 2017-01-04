@@ -327,4 +327,7 @@
 
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
+
+    <!-- Use ERI text for network name on CDMA LTE -->
+    <bool name="config_LTE_eri_for_network_name">false</bool>
 </resources>
