@@ -63,7 +63,7 @@ BOARD_RAMDISK_OFFSET     := 0x02200000
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8996
-TARGET_KERNEL_CONFIG := cyanogenmod_pme_defconfig
+TARGET_KERNEL_CONFIG := pme_defconfig
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
