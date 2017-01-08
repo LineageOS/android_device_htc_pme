@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprint.msm8996.so
+
 # Gesture Handler
 PRODUCT_PACKAGES += \
     GestureHandler
