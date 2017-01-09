@@ -480,7 +480,6 @@ etc/firmware/widevine.b06
 etc/firmware/widevine.mdt
 
 # Fingerprint
-bin/fingerprintd
 etc/firmware/htc_fpc_ta.b00
 etc/firmware/htc_fpc_ta.b01
 etc/firmware/htc_fpc_ta.b02
