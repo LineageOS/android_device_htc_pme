@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprintd
+
 # Gesture Handler
 PRODUCT_PACKAGES += \
     GestureHandler
