@@ -206,7 +206,7 @@ static int device_open(const hw_module_t *module, const char *name, hw_device_t 
     }
 
     device->base.common.tag = HARDWARE_DEVICE_TAG;
-    device->base.common.version = device->vendor.device->common.version;
+    device->base.common.version = HARDWARE_MODULE_API_VERSION(2, 0);
     device->base.common.module = (hw_module_t *) module;
     device->base.common.close = device_close;
 
