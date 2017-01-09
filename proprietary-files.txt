@@ -494,6 +494,17 @@ lib64/lib_fp_img_store.so
 lib/lib_fpc_tac_shared.so
 lib/lib_fp_img_store.so
 
+# Fingerprint compatibility for M firmware
+etc/firmware/htc_fp6_ta.b00
+etc/firmware/htc_fp6_ta.b01
+etc/firmware/htc_fp6_ta.b02
+etc/firmware/htc_fp6_ta.b03
+etc/firmware/htc_fp6_ta.b04
+etc/firmware/htc_fp6_ta.b05
+etc/firmware/htc_fp6_ta.b06
+etc/firmware/htc_fp6_ta.mdt
+lib64/hw/fingerprint.vendor6.msm8996.so
+
 # Graphics firmware
 etc/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw
