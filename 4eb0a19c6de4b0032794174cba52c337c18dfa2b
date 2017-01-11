@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_7122f6ba",
+        "filename": "releasetools/releasetools.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 16478
+      },
+      "writtenOn": "2017-01-11T18:27:41Z",
+      "side": 1,
+      "message": "Change to rename to comply with CTS?",
+      "range": {
+        "startLine": 18,
+        "startChar": 136,
+        "endLine": 18,
+        "endChar": 143
+      },
+      "revId": "4eb0a19c6de4b0032794174cba52c337c18dfa2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_11328a10",
+        "filename": "releasetools/releasetools.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 16478
+      },
+      "writtenOn": "2017-01-11T18:27:41Z",
+      "side": 1,
+      "message": "Change to rename to comply with CTS?",
+      "range": {
+        "startLine": 18,
+        "startChar": 72,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "4eb0a19c6de4b0032794174cba52c337c18dfa2b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
