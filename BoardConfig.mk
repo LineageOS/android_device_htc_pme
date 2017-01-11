@@ -173,6 +173,9 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
+# Release
+TARGET_RELEASETOOLS_EXTENSIONS := device/htc/pme/releasetools
+
 # RIL
 TARGET_RIL_VARIANT := caf
 
