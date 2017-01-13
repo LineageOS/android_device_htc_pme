@@ -50,16 +50,14 @@ static struct light_state_t g_battery;
 
 static bool write_led_error = false;
 
-const char *const INDICATOR_LED_FILE = "/sys/class/leds/indicator/ModeRGB";
+const char *const INDICATOR_LED_FILE = "/sys/class/leds/indicator/mode_and_lut_params";
 const char *const BUTTON_BACKLIGHT_FILE = "/sys/class/leds/button-backlight/brightness";
 const char *const LCD_BACKLIGHT_FILE = "/sys/class/leds/lcd-backlight/brightness";
 
-static int write_file(const char *path, const char *format, uint32_t value) {
+static int write_file_string(const char *path, const char *value) {
     int fd;
     int rc = 0;
     int bytes, written;
-    char buffer[20];
-
     fd = open(path, O_RDWR);
     if (fd < 0) {
         rc = -errno;
@@ -70,19 +68,29 @@ static int write_file(const char *path, const char *format, uint32_t value) {
         return rc;
     }
 
-    bytes = snprintf(buffer, sizeof(buffer), format, value);
-    written = write(fd, buffer, bytes);
+    written = write(fd, value, strlen(value));
     if (written < 0) {
         rc = -errno;
-        ALOGE("%s: failed to write 0x%08x\n", __func__, value);
+        ALOGE("%s: failed to write %s\n", __func__, value);
     }
     close(fd);
     return rc;
 }
 
-static int write_led(uint32_t value) {
-    /* LED expects a hex number */
-    return write_file(INDICATOR_LED_FILE, "%08x", value);
+static int write_file(const char *path, const char *format, uint32_t value) {
+    char buffer[20];
+
+    snprintf(buffer, sizeof(buffer), format, value);
+    return write_file_string(path, buffer);
+}
+
+static int write_led(uint32_t mode_rgb, uint32_t on_ms, uint32_t off_ms)
+{
+    char buf[100];
+
+    /* Scale this down because we can only flash quickly */
+    sprintf(buf, "%x %u %u 0", mode_rgb, on_ms / 4, off_ms / 4);
+    return write_file_string(INDICATOR_LED_FILE, buf);
 }
 
 static int write_button(uint32_t value) {
@@ -114,12 +122,15 @@ static void set_speaker_light_locked(UNUSED struct light_device_t *dev,
     int rc;
     uint32_t color;
     uint32_t indicator_value = 0x00000000;
+    uint32_t flashOnMS = 0, flashOffMS = 0;
 
     if (state == NULL) {
         /* Unset everything */
         goto write_indicator_value;
     }
 
+    flashOnMS = state->flashOnMS;
+    flashOffMS = state->flashOffMS;
     color = state->color & 0x00ffffff;
 
     ALOGV("%s: color: 0x%08x", __func__, color);
@@ -149,7 +160,7 @@ static void set_speaker_light_locked(UNUSED struct light_device_t *dev,
     }
 
 write_indicator_value:
-    rc = write_led(indicator_value);
+    rc = write_led(indicator_value, flashOnMS, flashOffMS);
     if (rc < 0) {
         if (!write_led_error) {
             ALOGE("%s: Error writing to LED file\n", __func__);

@@ -380,6 +380,7 @@ on boot
 
     # LED
     chown system system /sys/class/leds/indicator/ModeRGB
+    chown system system /sys/class/leds/indicator/mode_and_lut_params
     chown system system /sys/class/leds/indicator/off_timer
 
     # Flashlight
