@@ -136,6 +136,10 @@ PRODUCT_PACKAGES += \
     fingerprint.msm8996 \
     fingerprintd
 
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
+
 # Gesture Handler
 PRODUCT_PACKAGES += \
     GestureHandler
