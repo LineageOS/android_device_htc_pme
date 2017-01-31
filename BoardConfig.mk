@@ -109,8 +109,8 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/cmhw \
-    hardware/cyanogen/cmhw
+    hardware/cyanogen/cmhw \
+    $(DEVICE_PATH)/cmhw
 
 # CNE and DPM
 BOARD_USES_QCNE := true
