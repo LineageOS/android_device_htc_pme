@@ -8,6 +8,7 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 tunnel.audio.encode=false
+audio.offload.disable=true
 audio.offload.buffer.size.kb=1024
 audio.offload.video=true
 audio.offload.pcm.16bit.enable=false
