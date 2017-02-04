@@ -121,14 +121,12 @@ void vendor_load_properties()
         load_properties(htc_unlocked_properties);
     } else if (is_variant_verizon(bootcid)) {
         load_properties(htc_verizon_properties);
-    } else if (bootmid == "2PS620000") {
-        /* If we don't know the variant, fall back to europe but make it clear we did so */
-        property_set("ro.build.product", "HTC 10 (unknown international)");
-        property_set("ro.product.device", "HTC 10 (unknown international)");
-        load_properties(htc_europe_properties);
     } else {
-        property_set("ro.build.product", "HTC 10 (unknown)");
-        property_set("ro.product.device", "HTC 10 (unknown)");
-        load_properties(htc_unlocked_properties);
+        property_set("ro.lineage.invalid_bootcid", bootcid.c_str());
+        if (bootmid == "2PS620000") {
+            load_properties(htc_europe_properties);
+        } else {
+            load_properties(htc_unlocked_properties);
+        }
     }
 }
