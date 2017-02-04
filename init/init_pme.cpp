@@ -117,7 +117,7 @@ void vendor_load_properties()
         load_properties(htc_taiwan_properties);
     } else if (is_variant_tmobile_usa(bootcid)) {
         load_properties(htc_tmobile_usa_properties);
-    } else if (is_variant_unlocked(bootcid) || bootcid == "11111111") {
+    } else if (is_variant_unlocked(bootcid)) {
         load_properties(htc_unlocked_properties);
     } else if (is_variant_verizon(bootcid)) {
         load_properties(htc_verizon_properties);
