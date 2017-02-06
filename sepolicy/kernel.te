@@ -1,1 +1,2 @@
+# HTC's battery code directly writes to misc to store (debugging?) state
 allow kernel misc_block_device:blk_file rw_file_perms;

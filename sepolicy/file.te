@@ -1,5 +1,4 @@
 type carrier_file, fs_type, contextmount_type;
-type clockd_socket, file_type;
 type forceencrypt_block_device, dev_type;
 type sysfs_fingerprint, fs_type, sysfs_type;
 type sysfs_gesture, fs_type, sysfs_type;
