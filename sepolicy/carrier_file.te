@@ -1,2 +1,0 @@
-allow carrier_file carrier_file:dir r_dir_perms;
-allow carrier_file carrier_file:file r_file_perms;

@@ -1,9 +1,0 @@
-type clockd, domain;
-type clockd_exec, exec_type, file_type;
-init_daemon_domain(clockd)
-
-allow clockd clockd_socket:sock_file create_file_perms;
-allow clockd self:capability { chown fowner fsetid };
-allow clockd socket_device:dir w_dir_perms;
-
-type_transition clockd socket_device:sock_file clockd_socket "clockd";

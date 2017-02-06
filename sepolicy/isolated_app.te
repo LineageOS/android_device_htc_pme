@@ -1,1 +1,0 @@
-allow isolated_app shell_data_file:dir r_dir_perms;
