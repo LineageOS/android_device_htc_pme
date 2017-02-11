@@ -25,7 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-# the DIAG device node is not world writable/readable.
+# The DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     qcom_diag
 
 /dev/genlock              0666   system     system
@@ -34,7 +34,7 @@
 /dev/kgsl-2d0             0666   root       root
 /dev/kgsl-2d1             0666   root       root
 /dev/ion                  0664   system     system
-/dev/rtc0                 0600   system     system
+/dev/rtc0                 0660   system     system
 /dev/smd0                 0660   system     system
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
@@ -48,10 +48,10 @@
 /dev/rmnet_ctrl           0660   usb        usb
 /dev/dpl_ctrl             0660   usb        usb
 
-#permissions for CSVT
+# Permissions for CSVT
 /dev/smd11                0660   radio      radio
 
-#permissions for CIQ
+# Permissions for CIQ
 /dev/smd20                0660   system     system
 
 /dev/radio0               0640   system     system
@@ -107,12 +107,20 @@
 /dev/mhi_pipe_14          0640   radio      radio
 /dev/mhi_pipe_16          0640   radio      radio
 /dev/mhi_pipe_32          0640   radio      radio
+/dev/at_usb0              0640   radio      radio
+/dev/at_mdm0              0640   radio      radio
 /dev/video*               0660   system     camera
 /dev/media*               0660   system     camera
 /dev/v4l-subdev*          0660   system     camera
 /dev/qseecom              0660   system     drmrpc
+/dev/qsee_ipc_irq_spss    0660   system     drmrpc
 /dev/seemplog             0660   system     system
 /dev/pft                  0660   system     drmrpc
+/dev/spcom                0660   system     system
+/dev/sp_kernel            0660   system     system
+/dev/sp_ssr               0660   system     system
+/dev/sp_keymaster         0660   system     system
+/dev/cryptoapp            0660   system     system
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
 /dev/jpeg1                0660   system     camera
@@ -130,9 +138,9 @@
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
 /dev/hw_random            0600   root       root
-/dev/adsprpc-smd          0664   system     system
+/dev/sdsprpc-smd          0660   system     system
 
-#permissions for audio
+# Permissions for audio
 /dev/wcd-dsp-glink        0660   system     audio
 /dev/audio_slimslave      0660   system     audio
 /dev/msm_qcelp            0660   system     audio
@@ -175,6 +183,31 @@
 /dev/avtimer              0660   system     audio
 /dev/tfa9888              0660   media      audio
 
+# Misc
+/dev/ttyHSUSB4            0660   root       mtp
+/dev/nanohub              0640   system     system
+/dev/nanohub_comms        0640   system     system
+
+# CIR
+/dev/ttyHSL2              0660   system     system
+
+# Sensor hub
+/dev/shub_dload           0660   system     system
+/dev/shub_log             0660   system     system
+/dev/shub_event           0660   system     system
+
+# HtcCarGPS
+/dev/ttyHSUSB1            0600   system     system
+
+# For autobot car pc
+/dev/ttyHSUSB3            0660   root       mtp
+
+# MirrorLink
+/sys/devices/virtual/android_usb/android0/f_projector2    client_context_info    0664  system mtp
+/sys/devices/virtual/android_usb/android0/f_projector2    client_uuid           0664  system mtp
+/sys/devices/virtual/android_usb/android0/f_projector2    client_width          0664  system mtp
+/sys/devices/virtual/android_usb/android0/f_projector2    client_height         0664  system mtp
+
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
 /dev/dvb/adapter0/dvr*    0660   media       media
@@ -184,14 +217,14 @@
 /dev/tsc_mux0             0660   media       media
 /dev/tsc_ci0              0660   media       media
 
-# ultrasonic fingerprint
+# Ultrasonic fingerprint
 /sys/devices/soc/757a000.i2c/i2c-6/*                eeprom         0440    system   system
 
-# tbase
+# Tbase
 /dev/mobicore-user        0666   system    system
 /dev/mobicore             0600   system    system
 
-# sensors
+# Sensors
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system
@@ -213,12 +246,22 @@
 /sys/devices/virtual/optical_sensors/lightsensor    ls_poll_delay  0660    input    system
 /sys/devices/virtual/input/input*                   poll           0660    input    system
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
+/sys/devices/soc/78b7000.i2c/i2c-3/3-0020/input/input*    secure_touch         0440   system  drmrpc
+/sys/devices/soc/78b7000.i2c/i2c-3/3-0020/input/input*    secure_touch_enable  0660   system  drmrpc
+/sys/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input*    secure_touch         0440   system  drmrpc
+/sys/devices/soc/78b7000.i2c/i2c-3/3-0038/input/input*    secure_touch_enable  0660   system  drmrpc
+/sys/devices/soc/78b7000.i2c/i2c-3/3-004b/input/input*    secure_touch         0440   system  drmrpc
+/sys/devices/soc/78b7000.i2c/i2c-3/3-004b/input/input*    secure_touch_enable  0660   system  drmrpc
 
-# vm_bms
+# Laser sensor access
+/sys/devices/virtual/input/input*                   enable_ps_sensor 0660  system   system
+/sys/devices/virtual/input/input*                   set_delay_ms     0660  system   system
+
+# Vm_bms
 /dev/vm_bms               0660   system     system
 /dev/battery_data         0660   system     system
 
-#nfc permissions
+# Nfc permissions
 /dev/pn544                0660    nfc         nfc
 
 # UIO devices
@@ -239,25 +282,30 @@
 /dev/qbt1000              0660   system     system
 /dev/htc_smi              0660   system     system
 
-#ImproveTouch device
+# ImproveTouch device
 /dev/hbtp_input           0660   system     system
 /dev/hbtp_vm              0660   system     system
 
-# Storage: for factory reset protection feature
-/dev/block/bootdevice/by-name/frp       0660   system     system
+# Add device block for FRP
+/dev/block/platform/soc/7824900.sdhci/by-name/frp       0600   system     system
+/dev/block/platform/soc/7824900.sdhci/by-name/config    0600   system     system
+/dev/block/platform/soc/7464900.sdhci/by-name/frp       0600   system     system
+/dev/block/platform/soc/624000.ufshc/by-name/frp        0600   system     system
 
-#FPC fingerprint
-/sys/devices/soc/soc:fp_fpc1155   pinctl_set        0200  system system
-/sys/devices/soc/soc:fp_fpc1155   spi_owner         0200  system system
-/sys/devices/soc/soc:fp_fpc1155   spi_prepare       0200  system system
-/sys/devices/soc/soc:fp_fpc1155   regulator_enable  0200  system system
-/sys/devices/soc/soc:fp_fpc1155   bus_lock          0200  system system
+# Set the owner of partition control's block node to media and system for MFG disable camera feature.
+/dev/block/platform/soc/7464900.sdhci/by-name/control   0660    cameraserver   system
+/dev/block/platform/soc/7824900.sdhci/by-name/control   0660    cameraserver   system
+/dev/block/platform/soc/624000.ufshc/by-name/control   0660    cameraserver   system
+
+# For SKYLINK feature
+/dev/block/platform/soc/7824900.sdhci/by-name/skylink   0660   system     system
+
+# FPC fingerprint
 /sys/devices/soc/soc:fp_fpc1155   hw_reset          0200  system system
 /sys/devices/soc/soc:fp_fpc1155   wakeup_enable     0200  system system
-/sys/devices/soc/soc:fp_fpc1155   hw_reset          0200  system system
-/sys/devices/soc/soc:fp_fpc1155   clk_enable        0200  system system
+/sys/devices/soc/soc:fp_fpc1155   pinctl_set        0200  system system
 /sys/devices/soc/soc:fp_fpc1155   irq               0600  system system
 /sys/devices/soc/soc:fp_fpc1155   irq_count         0400  system system
+/sys/devices/soc/soc:fp_fpc1155   irq_gpio          0400  system system
 /sys/devices/soc/soc:fp_fpc1155   fp_disable_charge 0200  system system
 /sys/devices/soc/soc:fp_fpc1155   hal_footprint     0200  system system
-
