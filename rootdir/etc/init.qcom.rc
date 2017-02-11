@@ -411,12 +411,13 @@ service adsprpcd /system/bin/adsprpcd
     group media
 
 service audiod /system/bin/audiod
-   class late_start
-   user system
-   group system
+    class late_start
+    user system
+    group system
 
 service charger /charger
     class charger
+    group system graphics
     seclabel u:r:healthd:s0
     writepid /dev/cpuset/system-background/tasks
 
