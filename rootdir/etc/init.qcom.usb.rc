@@ -13,6 +13,8 @@
 # limitations under the License.
 
 on init
+    write /sys/class/android_usb/android0/f_rndis/manufacturer HTC
+    write /sys/class/android_usb/android0/f_rndis/vendorID 0bb4
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
 on post-fs
@@ -22,6 +24,8 @@ on post-fs
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
 on boot
+    write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
+    write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
 
 on charger
@@ -88,7 +92,7 @@ on property:sys.usb.config=ptp,adb
 on property:sys.usb.config=mass_storage
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 0bb4
-    write /sys/class/android_usb/android0/idProduct 0c01
+    write /sys/class/android_usb/android0/idProduct 0ff9
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
