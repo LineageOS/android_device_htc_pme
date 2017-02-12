@@ -35,6 +35,7 @@
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="508" />
         <device name="SND_DEVICE_IN_BT_SCO_MIC" acdb_id="1420" />
         <device name="SND_DEVICE_IN_BT_SCO_MIC_WB" acdb_id="1420" />
+        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="501" />
     </acdb_ids>
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
@@ -55,6 +56,7 @@
          <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" alias="headphones-voice" />
          <device name="SND_DEVICE_IN_VOICE_DMIC" alias="dmic-endfire" />
          <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="speaker-dmic-endfire" />
+         <device name="SND_DEVICE_IN_HANDSET_MIC" alias="line" />
     </device_names>
     <native_configs>
         <feature name="NATIVE_AUDIO_44.1" codec_support="1"/>
