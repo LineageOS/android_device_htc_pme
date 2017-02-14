@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_aa6b6f84",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T09:57:09Z",
+      "side": 1,
+      "message": "What does this fix?\n\nJust because stock has it does not mean:\n\na) stock actually needed it in the first place\nb) we need it (unless the service is blob that we are using from stock, which it isn\u0027t in this case).",
+      "revId": "995e226fca9eba9435a11186efa19268656ee614",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
