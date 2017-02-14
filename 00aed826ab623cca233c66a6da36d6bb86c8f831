@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_6a2c574b",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "Aare we using this functionality?",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_4a3193a1",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "Are we using this\n\ngrep -r stargate of our vendor repo shows no blobs containing that string, let alone this path.",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_2a265f69",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "This is already done at line 128.",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_0a2b9b31",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "What uses this?",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ea1f2708",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "This might actually be used, but I would imagine that it needs selinux rule(s) added for it to actually be used.",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ca1c6316",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "I believe that these properties were removed in around android 5.0?",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_8a166bf0",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-02-14T10:26:42Z",
+      "side": 1,
+      "message": "Do we even have dm-1?  Stock does becasue they mount dm-0 via device mapper which mounts system on dm-0 and userdata on dm-1.  Since we don\u0027t do that, userdata should be on dm-0 and no dm-1 for us.",
+      "revId": "00aed826ab623cca233c66a6da36d6bb86c8f831",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
