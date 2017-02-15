@@ -67,6 +67,8 @@ EOF
 
 write_makefiles "$MY_DIR"/proprietary-files-qc-perf.txt
 
+write_makefiles "$MY_DIR"/proprietary-files-bluetooth.txt
+
 echo "endif" >> "$PRODUCTMK"
 
 cat << EOF >> "$ANDROIDMK"
