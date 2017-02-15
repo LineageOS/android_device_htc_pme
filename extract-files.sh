@@ -25,6 +25,7 @@ MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 CM_ROOT="$MY_DIR"/../../..
+QCOM_EXTRACTORS="$CM_ROOT/device/qcom/common/extractors"
 
 HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
@@ -55,5 +56,6 @@ setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC"
 extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC"
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
+extract "$QCOM_EXTRACTORS/bluetooth.txt" "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh
