@@ -1,0 +1,9 @@
+#
+# This file is copied from device/qcom/common/extractors.
+# If that file changes, this file should be updated and the
+# corresponding changes made here (and tested, of course).
+
+# aptX
+vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXHD-1.0.0-rel-Android21-ARMv7A.so
+vendor/lib/libaptXScheduler.so
