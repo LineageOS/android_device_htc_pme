@@ -130,7 +130,12 @@ static int select_profile(audio_mode_t mode, uint32_t snd_device)
     case AUDIO_MODE_RINGTONE:
         return PROFILE_RINGTONE;
     case AUDIO_MODE_IN_COMMUNICATION:
-        return PROFILE_VOIP;
+        if (device_class == IS_EARPIECE) {
+            return PROFILE_HANDSET;
+        } else if (device_class == IS_SPEAKER) {
+            return PROFILE_VOIP;
+        }
+        break;
     case AUDIO_MODE_NORMAL:
         if (device_class == IS_EARPIECE) {
             return PROFILE_HANDSET;
