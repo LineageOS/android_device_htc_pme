@@ -1,8 +1,0 @@
-# Perf
-bin/iop
-lib64/libqti-iop.so
-vendor/bin/perfd
-vendor/lib/libqti-iop-client.so
-vendor/lib/libqti-perfd-client.so
-vendor/lib64/libqti-iop-client.so
-vendor/lib64/libqti-perfd-client.so
