@@ -116,6 +116,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_camera
 
+# Snap
+PRODUCT_PACKAGES += \
+    Snap
+
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
