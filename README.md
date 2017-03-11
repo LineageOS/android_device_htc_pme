@@ -15,7 +15,7 @@ Storage | 32/64 GB
 MicroSD | Up to 200 GB
 Battery | Li-Ion 3000 mAh battery
 Display | 1440 x 2560 pixels, 5.2 inches (~565 ppi pixel density)
-Camera  | 12 MP, 4000 x 3000 pixels, autofocus, LED flash, OIS
+Camera  | 12 MP, 4000 x 3000 pixels, autofocus, LED flash
 
 Copyright 2016 - The CyanogenMod Project.
 
