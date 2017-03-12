@@ -698,3 +698,11 @@ on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     # Reset the read_ahead_kb to 256
     write /sys/block/dm-0/queue/read_ahead_kb 256
+
+on property:gsm.sim.operator.numeric=*
+    start op-prop
+
+service op-prop /system/bin/operator-properties
+    class main
+    disabled
+    oneshot

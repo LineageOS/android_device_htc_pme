@@ -886,6 +886,12 @@ vendor/lib/libmm-hdcpmgr.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libmm-hdcpmgr.so
 
+# Properties
+customize/MNSprop/310160.prop
+customize/MNSprop/311180.prop
+customize/MNSprop/default.prop
+customize/mns_map.xml
+
 # QMI
 bin/irsc_util
 etc/permissions/qti_permissions.xml
