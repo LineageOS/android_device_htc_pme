@@ -254,6 +254,10 @@ PRODUCT_PACKAGES += \
     power.msm8996 \
     thermal.msm8996
 
+# Properties
+PRODUCT_PACKAGES += \
+    operator-properties
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson
