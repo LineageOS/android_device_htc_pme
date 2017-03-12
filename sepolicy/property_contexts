@@ -1,1 +1,13 @@
 htc.camera.         u:object_r:camera_prop:s0
+
+# Set by operator-properties
+CMSUPPORT                       u:object_r:radio_prop:s0
+EnableLTEBANDSCANPRI            u:object_r:radio_prop:s0
+persist.rcs.supported           u:object_r:radio_prop:s0
+ro.apn.uservalue.protocol       u:object_r:radio_prop:s0
+ro.net.apnroamingwhitelist      u:object_r:radio_prop:s0
+ro.net.apnwhitelist             u:object_r:radio_prop:s0
+ro.pdn.profile                  u:object_r:radio_prop:s0
+ro.phone.min_match              u:object_r:radio_prop:s0
+ro.telephony.ipv6_capability    u:object_r:radio_prop:s0
+VOLTE_PROFILE                   u:object_r:radio_prop:s0

@@ -1,0 +1,8 @@
+type operator-properties, domain;
+type operator-properties_exec, exec_type, file_type;
+init_daemon_domain(operator-properties)
+
+set_prop(operator-properties, config_prop);
+set_prop(operator-properties, radio_prop);
+set_prop(operator-properties, system_prop);
+
