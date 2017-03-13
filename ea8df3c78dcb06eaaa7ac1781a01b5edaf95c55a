@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_5d9a7715",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-03-13T23:05:14Z",
+      "side": 1,
+      "message": "This should be:\n\nvendor/lib64/libril-qc-qmi-1.so:vendor/lib64/libril-qc-qmi-1-default.so\n\nto allow you to pull from stock and perform the renaming when (if?) we get another stock update.",
+      "revId": "ea8df3c78dcb06eaaa7ac1781a01b5edaf95c55a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_3d9fc305",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2017-03-13T23:05:14Z",
+      "side": 1,
+      "message": "Can you add |\u003csha1sum\u003e on this to pin this version.",
+      "revId": "ea8df3c78dcb06eaaa7ac1781a01b5edaf95c55a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
