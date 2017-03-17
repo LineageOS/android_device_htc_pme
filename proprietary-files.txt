@@ -655,8 +655,7 @@ framework/izat.xt.srv.jar|da31c6183f8d29251ce5656ddab6d4b386934382
 -lib64/libloc_api_v02.so|bc224bffbd48028409f60fcfa59024ec57adfdf6
 lib64/libloc_ds_api.so|3597ccb6fe31fe2bac34dbf0c8e3fc582666af2f
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk|af49810b5afea665db765726519e246297fe3f26
-# slim_daemon is hexedited s/liblog.so/libhlg.so/
-vendor/bin/slim_daemon|c2404479260517e5e86d6f64398f1ba070b39d53
+vendor/bin/slim_daemon|8ffbe40e0fd557d1300ee43ed8f5aab3dd08f8ba
 vendor/lib64/hw/flp.default.so|1604238d1259a9472c594e87422d8503a584b6fe
 vendor/lib64/libalarmservice_jni.so|124ab205b93f0e8942325ffce5516b1e18bf92d7
 vendor/lib64/libasn1cper.so|94c38bc6e4c79a6f24a53f223f8ca66108876723
