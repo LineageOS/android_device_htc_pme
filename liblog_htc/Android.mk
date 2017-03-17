@@ -23,23 +23,3 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
 include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-
-# Provide a hexeditable drop in for liblog for special executables
-# that are started with a clean environment, e.g. slim_daemon. These
-# executables will need to be hexedited.
-
-LOCAL_SRC_FILES := \
-    htc_log.c
-
-LOCAL_SHARED_LIBRARIES := \
-    liblog
-
-LOCAL_MODULE := libhlg
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-
-include $(BUILD_SHARED_LIBRARY)
-
-
