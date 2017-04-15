@@ -36,7 +36,7 @@ TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
