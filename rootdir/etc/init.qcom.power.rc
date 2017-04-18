@@ -1,3 +1,20 @@
+on boot
+    # update cpusets now that processors are up
+    write /dev/cpuset/top-app/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+
+    # Add a cpuset for the camera daemon
+    # we want all cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus "0-3"
+    write /dev/cpuset/camera-daemon/mems 0
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+
 on enable-low-power
     # Disable thermal & BCL core_control to update interactive gov settings
     write /sys/module/msm_thermal/core_control/enabled 0
@@ -13,21 +30,11 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/online 1
 
     # Update foreground and background cpusets
-    write /dev/cpuset/cpu_exclusive 0
-    write /dev/cpuset/background/cpus "0-1"
-    write /dev/cpuset/system-background/cpus "0-3"
-    write /dev/cpuset/foreground/cpus "0-3"
-    write /dev/cpuset/foreground/boost/cpus "0-3"
+    write /dev/cpuset/background/cpus "0"
+    write /dev/cpuset/system-background/cpus "0-2"
+    write /dev/cpuset/foreground/cpus "0-2"
+    write /dev/cpuset/foreground/boost/cpus "0-2"
     write /dev/cpuset/top-app/cpus "0-3"
-
-    # Add a cpuset for the camera daemon
-    # we want all cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus "0-3"
-    write /dev/cpuset/camera-daemon/mems 0
-    chown system system /dev/cpuset/camera-daemon
-    chown system system /dev/cpuset/camera-daemon/tasks
-    chmod 0664 /dev/cpuset/camera-daemon/tasks
 
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
