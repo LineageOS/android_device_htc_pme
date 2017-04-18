@@ -6,8 +6,6 @@ on enable-low-power
     write /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask 0
     write /sys/devices/soc/soc:qcom,bcl/mode "enable"
 
-    # Enable Adaptive LMK
-    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/adj "0,200,300,700,900,906"
     write /sys/module/lowmemorykiller/parameters/minfree "27648,41472,48384,72378,84375,121875"
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 159375
