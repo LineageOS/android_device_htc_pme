@@ -22,7 +22,7 @@ DEVICE_PATH := device/htc/pme
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := pme,pmeuhl,pmewhl,pmewl,pmeul,htc_pmeuhl,htc_pmewhl,htc_pmewl,htc_pmeul
+TARGET_OTA_ASSERT_DEVICE := pme,pmeuhl,pmewhl,pmewl,pmeul,htc_pmeuhl,htc_pmewhl,htc_pmewl,htc_pmeul,htc_pmeuhljapan
 
 # Architecture
 TARGET_ARCH := arm64
