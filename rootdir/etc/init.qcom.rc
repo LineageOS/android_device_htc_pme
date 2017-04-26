@@ -72,6 +72,11 @@ on init
 on fs
     mount_all fstab.qcom
 
+    # Add rfg_3 mounting from stock. This way we will still boot if partition doesn't actually exist on the device.
+    mkdir /firmware/wsd 0500 rfs rfs
+    wait /dev/block/bootdevice/by-name/rfg_3
+    mount vfat /dev/block/bootdevice/by-name/rfg_3 /firmware/wsd ro shortname=lower,uid=3012,gid=3012,dmask=277,fmask=377
+
     # symlink firmware to /firmware/image
     wait /system/bin/sh
     class_start firmware-link
