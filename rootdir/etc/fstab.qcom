@@ -18,7 +18,6 @@
 /dev/block/bootdevice/by-name/misc          /misc              emmc    defaults                                                                                          defaults
 /dev/block/bootdevice/by-name/adsp          /firmware/adsp     vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
 /dev/block/bootdevice/by-name/radio         /firmware/radio    vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
-/dev/block/bootdevice/by-name/rfg_3         /firmware/wsd      vfat    ro,uid=3012,gid=3012,fmask=0377,dmask=0277,shortname=lower,context=u:object_r:firmware_file:s0    wait
 /dev/block/bootdevice/by-name/slpi          /firmware/slpi     vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
 /dev/block/bootdevice/by-name/venus         /firmware/venus    vfat    ro,uid=1000,gid=1000,fmask=0337,dmask=0227,shortname=lower,context=u:object_r:firmware_file:s0    wait
 
