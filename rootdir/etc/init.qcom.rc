@@ -414,11 +414,13 @@ service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
+    writepid /dev/cpuset/foreground/tasks
 
 service audiod /system/bin/audiod
    class late_start
    user system
    group system
+    writepid /dev/cpuset/foreground/tasks
 
 service charger /charger
     class charger
@@ -446,6 +448,7 @@ service hvdcp_opti /system/bin/hvdcp_opti
     class main
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
@@ -453,6 +456,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    socket ims_rtpd stream 0660 system radio
    group radio net_raw diag diag inet log
    disabled
+   writepid /dev/cpuset/system-background/tasks
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
@@ -490,6 +494,7 @@ service ipacm-diag /system/bin/ipacm-diag
     user system
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin qcom_diag
+    writepid /dev/cpuset/system-background/tasks
 
 service ipacm /system/bin/ipacm
     class main
@@ -567,6 +572,7 @@ service ppd /system/vendor/bin/mm-pp-dpps
     group system graphics
     socket pps stream 0660 system system
     disabled
+    writepid /dev/cpuset/foreground/tasks
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
@@ -656,6 +662,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -665,6 +672,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
