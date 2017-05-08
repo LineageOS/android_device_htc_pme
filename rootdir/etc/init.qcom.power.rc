@@ -129,7 +129,7 @@ on property:dev.bootcomplete=1
     # Update foreground and background cpusets (goal is load balancing
     # and UI responsiveness).
     write /dev/cpuset/background/cpus "0"
-    write /dev/cpuset/system-background/cpus "0-2"
+    write /dev/cpuset/system-background/cpus "0-1"
     write /dev/cpuset/foreground/cpus "0-2"
     write /dev/cpuset/foreground/boost/cpus "0-2"
     write /dev/cpuset/top-app/cpus "0-3"
