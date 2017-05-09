@@ -86,6 +86,7 @@ struct pcm *tfa_clocks_on(tfa_t *t)
     struct mixer_ctl *ctl;
     struct pcm *pcm;
     struct pcm_params *pcm_params;
+    int mixer_value;
 
     ctl = mixer_get_ctl_by_name(t->mixer, AMP_MIXER_CTL);
     if (ctl == NULL) {
@@ -101,6 +102,12 @@ struct pcm *tfa_clocks_on(tfa_t *t)
 
     amp_pcm_config.period_count = pcm_params_get_max(pcm_params, PCM_PARAM_PERIODS);
     pcm_params_free(pcm_params);
+
+    mixer_value = mixer_ctl_get_value(ctl, 0);
+    if (mixer_value == 1) {
+        // clocks are already on
+        return NULL;
+    }
 
     mixer_ctl_set_value(ctl, 0, 1);
     pcm = pcm_open(SND_CARD, AMP_PCM_DEV, PCM_OUT, &amp_pcm_config);
@@ -126,6 +133,7 @@ struct pcm *tfa_clocks_on(tfa_t *t)
 int tfa_clocks_off(tfa_t *t, struct pcm *pcm)
 {
     struct mixer_ctl *ctl;
+    int mixer_value;
 
     pcm_close(pcm);
 
@@ -133,9 +141,15 @@ int tfa_clocks_off(tfa_t *t, struct pcm *pcm)
     if (ctl == NULL) {
         ALOGE("%s: Could not find %s", __func__, AMP_MIXER_CTL);
         return -ENODEV;
-    } else {
-        mixer_ctl_set_value(ctl, 0, 0);
     }
+
+    mixer_value = mixer_ctl_get_value(ctl, 0);
+    if (mixer_value == 0) {
+        // clocks are already off
+        return 0;
+    }
+
+    mixer_ctl_set_value(ctl, 0, 0);
 
     ALOGV("clocks: OFF");
     return 0;
