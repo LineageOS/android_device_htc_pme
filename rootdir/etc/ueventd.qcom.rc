@@ -261,3 +261,20 @@
 /sys/devices/soc/soc:fp_fpc1155   fp_disable_charge 0200  system system
 /sys/devices/soc/soc:fp_fpc1155   hal_footprint     0200  system system
 
+# HDMI
+/sys/class/graphics/fb1/hpd                     0644    system  graphics
+/sys/class/graphics/fb1/res_info                0644    system  graphics
+/sys/class/graphics/fb1/vendor_name             0644    system  graphics
+/sys/class/graphics/fb1/product_description     0644    system  graphics
+/sys/class/graphics/fb1/video_mode              0644    system  graphics
+/sys/class/graphics/fb1/format_3d               0644    system  graphics
+/sys/class/graphics/fb1/s3d_mode                0644    system  graphics
+/sys/class/graphics/fb1/dynamic_fps             0644    system  graphics
+/sys/class/graphics/fb1/msm_fb_dfps_mode        0644    system  graphics
+/sys/class/graphics/fb1/cec/enable              0644    system  graphics
+/sys/class/graphics/fb1/cec/logical_addr        0644    system  graphics
+/sys/class/graphics/fb1/cec/rd_msg              0644    system  graphics
+/sys/class/graphics/fb1/pa                      0644    system  graphics
+/sys/class/graphics/fb1/cec/wr_msg              0600    system  graphics
+/sys/class/graphics/fb1/hdcp/tp                 0644    system  graphics
+

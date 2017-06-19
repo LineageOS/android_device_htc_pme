@@ -258,6 +258,9 @@ on boot
     chown system system /sys/class/leds/lcd-backlight/burst_switch
     chown system system /sys/class/leds/lcd-backlight-nits/brightness
 
+    # HDMI
+    symlink /dev/graphics/fb1 /devices/virtual/switch/hdmi
+
     # Capacitive key disabler permissions
     chown system system /sys/devices/soc/757a000.i2c/i2c-6/6-0064/disable_key
 
