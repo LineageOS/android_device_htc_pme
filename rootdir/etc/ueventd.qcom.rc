@@ -260,4 +260,3 @@
 /sys/devices/soc/soc:fp_fpc1155   irq_count         0400  system system
 /sys/devices/soc/soc:fp_fpc1155   fp_disable_charge 0200  system system
 /sys/devices/soc/soc:fp_fpc1155   hal_footprint     0200  system system
-
