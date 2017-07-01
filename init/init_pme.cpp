@@ -94,7 +94,7 @@ static void load_properties(const char *original_data)
 
         while (isspace(*value)) value++;
 
-        property_set(key, value);
+        property_override(key, value);
     }
 
     free(data);
