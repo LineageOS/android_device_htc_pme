@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2016 The CyanogenMod Project
+                   2017 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License"
      you may not use this file except in compliance with the License.
@@ -20,12 +21,6 @@
     <PreferenceCategory
         android:key="screen_actions_key"
         android:title="@string/screen_actions_title" >
-
-        <SwitchPreference
-            android:key="double_tap_enable_key"
-            android:defaultValue="false"
-            android:title="@string/double_tap_enable_title"
-            android:summary="@string/double_tap_enable_summary" />
 
         <ListPreference
             android:key="swipe_up_action_key"
