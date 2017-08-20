@@ -1,3 +1,4 @@
 allow system_server persist_file:dir rw_dir_perms;
 allow system_server dex2oat_exec:file { read open };
+allow system_server sysfs_gesture:file write;
 allow system_server vibeamp_sysfs:file rw_file_perms;

@@ -24,17 +24,12 @@
 
         <activity
             android:name=".TouchscreenGestureSettingsActivity"
-            android:label="@string/screen_gestures_panel_title"
+            android:label="@string/touchscreen_gesture_settings_title"
             android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <action android:name="org.cyanogenmod.settings.device.GESTURE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.device" />
-            <meta-data
-                android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_gestures" />
         </activity>
 
     </application>
