@@ -10,7 +10,6 @@ static const char *htc_o2_uk_properties =
     "ro.build.product=htc_pmeuhl\n"
     "ro.product.device=htc_pmeuhl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.default_network=0\n"
     "ro.ril.vmail.23410=901\n"
     "ro.ril.vmail.27202=171\n"

@@ -9,7 +9,6 @@ static const char *htc_verizon_properties =
     "ro.build.product=htc_pmewl\n"
     "ro.product.device=htc_pmewl\n"
     "ro.product.model=HTC6545LVW\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.default_network=10\n"
     "ro.cdma.home.operator.alpha=Verizon\n"
     "ro.cdma.home.operator.numeric=310012\n"

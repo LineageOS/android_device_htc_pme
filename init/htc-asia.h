@@ -12,7 +12,6 @@ static const char *htc_asia_properties =
     "ro.build.product=htc_pmeuhl\n"
     "ro.product.device=htc_pmeuhl\n"
     "ro.product.model=HTC 2PS6200\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.ipv6_capability=1\n"
     "ro.ril.vmail.505029=+61411000212\n"
     "ro.ril.vmail.50506=+61430005333\n"

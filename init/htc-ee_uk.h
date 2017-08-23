@@ -9,7 +9,6 @@ static const char *htc_ee_uk_properties =
     "ro.build.product=htc_pmeuhl\n"
     "ro.product.device=htc_pmeuhl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.ipv6_capability=1\n"
     "ro.ril.oem.ecclist=999,112,911\n"
     "ro.ril.enable.a52=0\n"

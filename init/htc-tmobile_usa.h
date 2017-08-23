@@ -9,7 +9,6 @@ static const char *htc_tmobile_usa_properties =
     "ro.build.product=htc_pmewl\n"
     "ro.product.device=htc_pmewl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.ipv6_capability=1\n"
     "ro.phone.min_match=10\n"
     "ro.ril.vmail.310260=+18056377243\n"

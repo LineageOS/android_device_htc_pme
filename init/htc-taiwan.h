@@ -9,7 +9,6 @@ static const char *htc_taiwan_properties =
     "ro.build.product=htc_pmeuhl\n"
     "ro.product.device=htc_pmeuhl\n"
     "ro.product.model=HTC_M10h\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.ril.oem.ecclist=112,911,110,119\n"
     "ro.ril.enable.amr.wideband=0\n"
     "ro.ril.enable.sdr=1\n"

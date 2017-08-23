@@ -9,7 +9,6 @@ static const char *htc_sprint_properties =
     "ro.build.product=htc_pmewhl\n"
     "ro.product.device=htc_pmewhl\n"
     "ro.product.model=2PS64\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.cdma.home.operator.alpha=Sprint\n"
     "gsm.sim.operator.alpha=Chameleon\n"
     "gsm.operator.alpha=Chameleon\n"

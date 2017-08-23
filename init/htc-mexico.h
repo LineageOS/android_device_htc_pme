@@ -9,7 +9,6 @@ static const char *htc_mexico_properties =
     "ro.build.product=htc_pmewl\n"
     "ro.product.device=htc_pmewl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.phone.min_match=10\n"
     "ro.ril.vmail.334020=*86\n"
     "ro.ril.oem.ecclist=060,911,112\n"
