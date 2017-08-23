@@ -15,7 +15,6 @@ static const char *htc_europe_properties =
     "ro.build.product=htc_pmeuhl\n"
     "ro.product.device=htc_pmeuhl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "ro.telephony.default_network=0\n"
     "ro.telephony.ipv6_capability=1\n"
     "ro.ril.vmail.23415=1571,BT,121,VDF UK\n"

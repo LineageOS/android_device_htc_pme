@@ -10,7 +10,6 @@ static const char *htc_unlocked_properties =
     "ro.build.product=htc_pmewl\n"
     "ro.product.device=htc_pmewl\n"
     "ro.product.model=HTC 10\n"
-    "ro.product.model=MSM8996 for arm64\n"
     "persist.radio.NETWORK_SWITCH=1\n"
     "persist.rild.nitz_plmn=\n"
     "persist.rild.nitz_long_ons_0=\n"
