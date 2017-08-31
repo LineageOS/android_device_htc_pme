@@ -12,10 +12,12 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v14-preference \
     org.cyanogenmod.platform.internal
 
-LOCAL_AAPT_FLAGS := --extra-packages android.support.v7.preference:android.support.v14.preference:android.support.v17.preference:android.support.v7.appcompat:android.support.v7.recyclerview
+LOCAL_AAPT_FLAGS := --auto-add-overlay \
+    --extra-packages android.support.v7.preference:android.support.v14.preference:android.support.v17.preference:android.support.v7.appcompat:android.support.v7.recyclerview
 
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \
+    $(LOCAL_PATH)/../../../../packages/resources/devicesettings/res \
     frameworks/support/v7/preference/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \

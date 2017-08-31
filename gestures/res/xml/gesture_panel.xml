@@ -21,41 +21,37 @@
 
     <PreferenceCategory
         android:key="screen_actions_key"
-        android:title="@string/screen_actions_title" >
+        android:title="@string/gesture_display_title" >
 
         <ListPreference
             android:key="swipe_up_action_key"
             android:defaultValue="0"
-            android:title="@string/swipe_up_title"
-            android:dialogTitle="@string/swipe_up_title"
-            android:summary="@string/swipe_up_summary"
+            android:title="@string/touchscreen_swipe_up_title"
+            android:dialogTitle="@string/touchscreen_swipe_up_title"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
         <ListPreference
             android:key="swipe_down_action_key"
             android:defaultValue="0"
-            android:title="@string/swipe_down_title"
-            android:dialogTitle="@string/swipe_down_title"
-            android:summary="@string/swipe_down_summary"
+            android:title="@string/touchscreen_swipe_down_title"
+            android:dialogTitle="@string/touchscreen_swipe_down_title"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
         <ListPreference
             android:key="swipe_left_action_key"
             android:defaultValue="0"
-            android:title="@string/swipe_left_title"
-            android:dialogTitle="@string/swipe_left_title"
-            android:summary="@string/swipe_left_summary"
+            android:title="@string/touchscreen_swipe_left_title"
+            android:dialogTitle="@string/touchscreen_swipe_left_title"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
         <ListPreference
             android:key="swipe_right_action_key"
             android:defaultValue="0"
-            android:title="@string/swipe_right_title"
-            android:dialogTitle="@string/swipe_right_title"
-            android:summary="@string/swipe_right_summary"
+            android:title="@string/touchscreen_swipe_right_title"
+            android:dialogTitle="@string/touchscreen_swipe_right_title"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
