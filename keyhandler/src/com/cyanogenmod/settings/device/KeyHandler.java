@@ -37,7 +37,7 @@ public class KeyHandler implements DeviceKeyHandler {
         mContext = context;
     }
 
-    public boolean handleKeyEvent(KeyEvent event) {
+    public KeyEvent handleKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_HOME && event.getScanCode() == 143) {
             CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
             boolean virtualKeysEnabled = hardware.get(CMHardwareManager.FEATURE_KEY_DISABLE);
@@ -46,10 +46,10 @@ public class KeyHandler implements DeviceKeyHandler {
                 Log.d(TAG, "home key " + (virtualKeysEnabled ? "filtered" : "delivered"));
             }
 
-            return virtualKeysEnabled;
+            return virtualKeysEnabled ? null : event;
         }
 
-        return false;
+        return event;
     }
 
 }
